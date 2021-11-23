@@ -1,4 +1,5 @@
 import 'landingpageadmin.dart';
+import 'addjobadmin.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -119,7 +120,7 @@ class _JoblistadminWidgetState extends State<JoblistadminWidget> {
                           borderWidth: 1,
                           buttonSize: 60,
                           icon: Icon(
-                            Icons.edit_rounded,
+                            Icons.delete,
                             color: Colors.black,
                             size: 30,
                           ),

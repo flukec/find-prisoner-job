@@ -1,16 +1,17 @@
 import 'applicant.dart';
 import 'joblist.dart';
+import profile.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class LandingpageWidget extends StatefulWidget {
-  LandingpageWidget({Key key}) : super(key: key);
+class LandingPageWidget extends StatefulWidget {
+  LandingPageWidget({Key key}) : super(key: key);
 
   @override
   _LandingPageWidgetState createState() => _LandingPageWidgetState();
 }
 
-class _LandingPageWidgetState extends State<LandingpageWidget> {
+class _LandingPageWidgetState extends State<LandingPageWidget> {
   bool _loadingButton = false;
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -25,12 +26,38 @@ class _LandingPageWidgetState extends State<LandingpageWidget> {
           child: Column(
             mainAxisSize: MainAxisSize.max,
             children: [
-              Align(
-                alignment: AlignmentDirectional(-0.9, 0),
-                child: Text(
-                  'Welcome!\nLet find the job',
-                  style: FlutterFlowTheme.title1,
-                ),
+              Row(
+                mainAxisSize: MainAxisSize.max,
+                children: [
+                  Text(
+                    'Welcome!\nLet find the job',
+                    style: FlutterFlowTheme.title1,
+                  ),
+                  Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(80, 0, 0, 0),
+                    child: InkWell(
+                      onTap: () async {
+                        await Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => ProfileWidget(),
+                          ),
+                        );
+                      },
+                      child: Container(
+                        width: 50,
+                        height: 50,
+                        clipBehavior: Clip.antiAlias,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                        ),
+                        child: Image.asset(
+                          'assets/images/blank-profile-picture-973460_1280.png',
+                        ),
+                      ),
+                    ),
+                  )
+                ],
               ),
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(0, 20, 190, 0),
@@ -64,6 +91,13 @@ class _LandingPageWidgetState extends State<LandingpageWidget> {
                     borderRadius: 12,
                   ),
                   loading: _loadingButton,
+                ),
+              ),
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
+                child: Text(
+                  'Your  applicant job',
+                  style: FlutterFlowTheme.title3,
                 ),
               ),
               Padding(
@@ -195,7 +229,7 @@ class _LandingPageWidgetState extends State<LandingpageWidget> {
                   mainAxisSize: MainAxisSize.max,
                   children: [
                     Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(250, 300, 0, 0),
+                      padding: EdgeInsetsDirectional.fromSTEB(250, 260, 0, 0),
                       child: FlutterFlowIconButton(
                         borderColor: Colors.transparent,
                         borderRadius: 30,
@@ -227,3 +261,4 @@ class _LandingPageWidgetState extends State<LandingpageWidget> {
     );
   }
 }
+
