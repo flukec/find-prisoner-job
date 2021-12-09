@@ -51,7 +51,7 @@ class _JoblistadminWidgetState extends State<JoblistadminWidget> {
                     padding: EdgeInsetsDirectional.fromSTEB(30, 0, 0, 0),
                     child: Text(
                       'Joblist',
-                      style: FlutterFlowTheme.title1,
+                      style: TextStyle(fontSize: 24),
                     ),
                   )
                 ],
@@ -104,12 +104,12 @@ class _JoblistadminWidgetState extends State<JoblistadminWidget> {
                                     EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
                                 child: Text(
                                   'wiriya turakit company',
-                                  style: FlutterFlowTheme.bodyText1,
+                                  style: TextStyle(fontSize: 14),
                                 ),
                               ),
                               Text(
                                 'job: Account',
-                                style: FlutterFlowTheme.bodyText1,
+                                style: TextStyle(fontSize: 14),
                               )
                             ],
                           ),
@@ -153,7 +153,8 @@ class _JoblistadminWidgetState extends State<JoblistadminWidget> {
                         width: 300,
                         height: 70,
                         color: Color(0xFFF3AE20),
-                        textStyle: FlutterFlowTheme.subtitle2.override(
+                        textStyle: TextStyle(
+                          fontSize: 16,
                           fontFamily: 'Poppins',
                           color: Colors.white,
                         ),

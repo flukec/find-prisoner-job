@@ -10,8 +10,8 @@ class SignupWidget extends StatefulWidget {
 }
 
 class _SignupWidgetState extends State<SignupWidget> {
-  TextEditingController emailAddressController;
-  TextEditingController passwordController;
+  TextEditingController emailAddressController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
   bool passwordVisibility;
   bool _loadingButton1 = false;
   bool _loadingButton2 = false;
@@ -49,7 +49,8 @@ class _SignupWidgetState extends State<SignupWidget> {
                       child: Text(
                         'Sign up',
                         textAlign: TextAlign.start,
-                        style: FlutterFlowTheme.title1.override(
+                        style: TextStyle(
+                          fontSize: 24,
                           fontFamily: 'Poppins',
                           color: Colors.black,
                         ),
@@ -70,10 +71,10 @@ class _SignupWidgetState extends State<SignupWidget> {
                         obscureText: false,
                         decoration: InputDecoration(
                           labelText: 'Email Address',
-                          labelStyle: FlutterFlowTheme.bodyText1.override(
+                          labelStyle: TextStyle(
+                            fontSize: 14,
                             fontFamily: 'Poppins',
                             color: Color(0xFF95A1AC),
-                            fontSize: 14,
                             fontWeight: FontWeight.normal,
                           ),
                           enabledBorder: OutlineInputBorder(
@@ -95,7 +96,7 @@ class _SignupWidgetState extends State<SignupWidget> {
                           contentPadding:
                               EdgeInsetsDirectional.fromSTEB(16, 24, 0, 24),
                         ),
-                        style: FlutterFlowTheme.bodyText1.override(
+                        style: TextStyle(
                           fontFamily: 'Poppins',
                           color: Color(0xFF2B343A),
                           fontSize: 14,
@@ -118,7 +119,7 @@ class _SignupWidgetState extends State<SignupWidget> {
                         obscureText: !passwordVisibility,
                         decoration: InputDecoration(
                           labelText: 'Password',
-                          labelStyle: FlutterFlowTheme.bodyText1.override(
+                          labelStyle: TextStyle(
                             fontFamily: 'Poppins',
                             color: Color(0xFF95A1AC),
                             fontSize: 14,
@@ -155,7 +156,7 @@ class _SignupWidgetState extends State<SignupWidget> {
                             ),
                           ),
                         ),
-                        style: FlutterFlowTheme.bodyText1.override(
+                        style: TextStyle(
                           fontFamily: 'Poppins',
                           color: Color(0xFF2B343A),
                           fontSize: 14,
@@ -193,7 +194,7 @@ class _SignupWidgetState extends State<SignupWidget> {
                           width: 210,
                           height: 60,
                           color: Color(0xFFF3AE20),
-                          textStyle: FlutterFlowTheme.subtitle1.override(
+                          textStyle: TextStyle(
                             fontFamily: 'Poppins',
                             color: Colors.white,
                             fontSize: 16,
@@ -220,7 +221,7 @@ class _SignupWidgetState extends State<SignupWidget> {
                   children: [
                     Text(
                       'Already have an account?',
-                      style: FlutterFlowTheme.bodyText1.override(
+                      style: TextStyle(
                         fontFamily: 'Poppins',
                         color: Colors.black,
                         fontSize: 14,
@@ -246,7 +247,7 @@ class _SignupWidgetState extends State<SignupWidget> {
                         width: 70,
                         height: 30,
                         color: Color(0x00FFFFFF),
-                        textStyle: FlutterFlowTheme.subtitle2.override(
+                        textStyle: TextStyle(
                           fontFamily: 'Poppins',
                           color: Color(0xFF39D2C0),
                           fontSize: 14,

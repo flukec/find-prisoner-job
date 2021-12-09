@@ -10,10 +10,10 @@ class LoginWidget extends StatefulWidget {
 }
 
 class _LoginWidgetState extends State<LoginWidget> {
-  TextEditingController emailAddressController;
-  TextEditingController passwordController;
+  TextEditingController emailAddressController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
   bool passwordVisibility;
-  bool _loadingButton1 = false;
+  bool _loadingButton1 = false; 
   bool _loadingButton2 = false;
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -47,7 +47,8 @@ class _LoginWidgetState extends State<LoginWidget> {
                       children: [
                         Text(
                           'Welcome \nto Another chance ',
-                          style: FlutterFlowTheme.title1.override(
+                          style: TextStyle(
+                            fontSize: 24,
                             fontFamily: 'Poppins',
                             color: Colors.black,
                           ),
@@ -64,7 +65,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                           padding: EdgeInsetsDirectional.fromSTEB(130, 0, 0, 0),
                           child: Text(
                             'Sign In',
-                            style: FlutterFlowTheme.title1,
+                            style: TextStyle(fontSize: 24),
                           ),
                         )
                       ],
@@ -77,10 +78,10 @@ class _LoginWidgetState extends State<LoginWidget> {
                       obscureText: false,
                       decoration: InputDecoration(
                         labelText: 'Email Address',
-                        labelStyle: FlutterFlowTheme.bodyText1.override(
-                          fontFamily: 'Poppins',
-                          color: Color(0x98FFFFFF),
+                        labelStyle: TextStyle(
                           fontSize: 14,
+                          fontFamily: 'Poppins',
+                          color: Color(0x98FFFFFF),                         
                           fontWeight: FontWeight.normal,
                         ),
                         enabledBorder: OutlineInputBorder(
@@ -102,10 +103,10 @@ class _LoginWidgetState extends State<LoginWidget> {
                         contentPadding:
                             EdgeInsetsDirectional.fromSTEB(20, 24, 20, 24),
                       ),
-                      style: FlutterFlowTheme.bodyText1.override(
+                      style: TextStyle(
+                        fontSize: 14,
                         fontFamily: 'Poppins',
                         color: Color(0xFF2B343A),
-                        fontSize: 14,
                         fontWeight: FontWeight.normal,
                       ),
                     ),
@@ -117,10 +118,10 @@ class _LoginWidgetState extends State<LoginWidget> {
                       obscureText: !passwordVisibility,
                       decoration: InputDecoration(
                         labelText: 'Password',
-                        labelStyle: FlutterFlowTheme.bodyText1.override(
+                        labelStyle: TextStyle(
+                          fontSize: 14,
                           fontFamily: 'Poppins',
                           color: Color(0x98FFFFFF),
-                          fontSize: 14,
                           fontWeight: FontWeight.normal,
                         ),
                         enabledBorder: OutlineInputBorder(
@@ -154,10 +155,10 @@ class _LoginWidgetState extends State<LoginWidget> {
                           ),
                         ),
                       ),
-                      style: FlutterFlowTheme.bodyText1.override(
+                      style: TextStyle(
+                        fontSize: 14,
                         fontFamily: 'Poppins',
                         color: Colors.white,
-                        fontSize: 14,
                         fontWeight: FontWeight.normal,
                       ),
                     ),
@@ -173,10 +174,10 @@ class _LoginWidgetState extends State<LoginWidget> {
                         width: 230,
                         height: 60,
                         color: Color(0xFFF3AE20),
-                        textStyle: FlutterFlowTheme.subtitle2.override(
+                        textStyle: TextStyle(
+                          fontSize: 16,
                           fontFamily: 'Poppins',
                           color: Colors.white,
-                          fontSize: 16,
                           fontWeight: FontWeight.w500,
                         ),
                         elevation: 3,
@@ -197,10 +198,10 @@ class _LoginWidgetState extends State<LoginWidget> {
                       children: [
                         Text(
                           'Don\'t have an account?',
-                          style: FlutterFlowTheme.bodyText1.override(
+                          style: TextStyle(
+                           fontSize: 14,
                             fontFamily: 'Poppins',
                             color: Colors.black,
-                            fontSize: 14,
                             fontWeight: FontWeight.normal,
                           ),
                         ),
@@ -223,10 +224,10 @@ class _LoginWidgetState extends State<LoginWidget> {
                             width: 70,
                             height: 30,
                             color: Color(0x00FFFFFF),
-                            textStyle: FlutterFlowTheme.subtitle2.override(
+                            textStyle: TextStyle(
+                              fontSize: 14,
                               fontFamily: 'Poppins',
                               color: Color(0xFF39D2C0),
-                              fontSize: 14,
                               fontWeight: FontWeight.bold,
                             ),
                             elevation: 0,

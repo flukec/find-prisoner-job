@@ -12,7 +12,7 @@ class PhysologicalInterviewWidget extends StatefulWidget {
 
 class _PhysologicalInterviewWidgetState
     extends State<PhysologicalInterviewWidget> {
-  TextEditingController textController;
+  TextEditingController textController = TextEditingController();
   bool _loadingButton1 = false;
   bool _loadingButton2 = false;
   bool _loadingButton3 = false;
@@ -60,7 +60,7 @@ class _PhysologicalInterviewWidgetState
                   ),
                   Text(
                     'Physological Interview',
-                    style: FlutterFlowTheme.title1,
+                    style: TextStyle(fontSize:24),
                   )
                 ],
               ),
@@ -78,7 +78,7 @@ class _PhysologicalInterviewWidgetState
                   obscureText: false,
                   decoration: InputDecoration(
                     hintText: '[Some hint text...]',
-                    hintStyle: FlutterFlowTheme.bodyText1,
+                    hintStyle: TextStyle(fontSize: 14),
                     enabledBorder: UnderlineInputBorder(
                       borderSide: BorderSide(
                         color: Color(0x00000000),
@@ -100,7 +100,7 @@ class _PhysologicalInterviewWidgetState
                       ),
                     ),
                   ),
-                  style: FlutterFlowTheme.bodyText1,
+                  style: TextStyle(fontSize: 14),
                 ),
               ),
             ),
@@ -115,7 +115,8 @@ class _PhysologicalInterviewWidgetState
                   width: 160,
                   height: 50,
                   color: Color(0xFFF3AE20),
-                  textStyle: FlutterFlowTheme.subtitle2.override(
+                  textStyle: TextStyle(
+                    fontSize: 16,
                     fontFamily: 'Poppins',
                     color: Colors.white,
                   ),
@@ -142,7 +143,8 @@ class _PhysologicalInterviewWidgetState
                       width: 130,
                       height: 40,
                       color: Color(0xFF6DBA45),
-                      textStyle: FlutterFlowTheme.subtitle2.override(
+                      textStyle: TextStyle(
+                        fontSize: 16,
                         fontFamily: 'Poppins',
                         color: Colors.white,
                       ),
@@ -165,7 +167,8 @@ class _PhysologicalInterviewWidgetState
                         width: 130,
                         height: 40,
                         color: Color(0xFFBF2F2F),
-                        textStyle: FlutterFlowTheme.subtitle2.override(
+                        textStyle: TextStyle(
+                          fontSize: 16,
                           fontFamily: 'Poppins',
                           color: Colors.white,
                         ),

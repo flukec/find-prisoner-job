@@ -41,7 +41,7 @@ class _LandingpageadminWidgetState extends State<LandingpageadminWidget> {
                       padding: EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
                       child: Text(
                         'Welcome to\ncheck page',
-                        style: FlutterFlowTheme.title1,
+                        style: TextStyle(fontSize: 24),
                       ),
                     ),
                   ),
@@ -66,7 +66,8 @@ class _LandingpageadminWidgetState extends State<LandingpageadminWidget> {
                         width: 130,
                         height: 40,
                         color: Color(0xFFF3AE20),
-                        textStyle: FlutterFlowTheme.subtitle2.override(
+                        textStyle: TextStyle(
+                          fontSize: 16,
                           fontFamily: 'Poppins',
                           color: Color(0xFFFEFEFE),
                         ),
@@ -106,7 +107,8 @@ class _LandingpageadminWidgetState extends State<LandingpageadminWidget> {
                         width: 320,
                         height: 90,
                         color: Color(0xFFF3AE20),
-                        textStyle: FlutterFlowTheme.subtitle2.override(
+                        textStyle: TextStyle(
+                          fontSize: 16,
                           fontFamily: 'Poppins',
                           color: Color(0xFFFEFEFE),
                         ),
@@ -142,7 +144,8 @@ class _LandingpageadminWidgetState extends State<LandingpageadminWidget> {
                     width: 320,
                     height: 90,
                     color: Color(0xFFF3AE20),
-                    textStyle: FlutterFlowTheme.subtitle2.override(
+                    textStyle: TextStyle(
+                      fontSize: 16,
                       fontFamily: 'Poppins',
                       color: Color(0xFFFEFEFE),
                     ),
@@ -177,7 +180,8 @@ class _LandingpageadminWidgetState extends State<LandingpageadminWidget> {
                     width: 320,
                     height: 90,
                     color: Color(0xFFF3AE20),
-                    textStyle: FlutterFlowTheme.subtitle2.override(
+                    textStyle: TextStyle(
+                      fontSize: 16,
                       fontFamily: 'Poppins',
                       color: Color(0xFFFEFEFE),
                     ),
@@ -211,7 +215,8 @@ class _LandingpageadminWidgetState extends State<LandingpageadminWidget> {
                     width: 320,
                     height: 90,
                     color: Color(0xFFF3AE20),
-                    textStyle: FlutterFlowTheme.subtitle2.override(
+                    textStyle: TextStyle(
+                      fontSize: 16,
                       fontFamily: 'Poppins',
                       color: Color(0xFFFEFEFE),
                     ),

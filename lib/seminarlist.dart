@@ -52,7 +52,7 @@ class _SeminarlistWidgetState extends State<SeminarlistWidget> {
                     padding: EdgeInsetsDirectional.fromSTEB(30, 0, 0, 0),
                     child: Text(
                       'Seminar',
-                      style: FlutterFlowTheme.title1,
+                      style: TextStyle(fontSize: 24),
                     ),
                   )
                 ],
@@ -69,7 +69,8 @@ class _SeminarlistWidgetState extends State<SeminarlistWidget> {
                   width: 300,
                   height: 60,
                   color: Color(0xFFF3AE20),
-                  textStyle: FlutterFlowTheme.subtitle2.override(
+                  textStyle: TextStyle(
+                    fontSize: 16,
                     fontFamily: 'Poppins',
                     color: Colors.white,
                   ),
@@ -93,7 +94,8 @@ class _SeminarlistWidgetState extends State<SeminarlistWidget> {
                   width: 300,
                   height: 60,
                   color: Color(0xFFF3AE20),
-                  textStyle: FlutterFlowTheme.subtitle2.override(
+                  textStyle: TextStyle(
+                    fontSize: 16,
                     fontFamily: 'Poppins',
                     color: Colors.white,
                   ),
@@ -117,7 +119,8 @@ class _SeminarlistWidgetState extends State<SeminarlistWidget> {
                   width: 300,
                   height: 60,
                   color: Color(0xFFF3AE20),
-                  textStyle: FlutterFlowTheme.subtitle2.override(
+                  textStyle: TextStyle(
+                    fontSize: 16,
                     fontFamily: 'Poppins',
                     color: Colors.white,
                   ),

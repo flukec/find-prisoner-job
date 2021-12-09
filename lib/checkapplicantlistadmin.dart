@@ -54,7 +54,7 @@ class _CheckapplicantlistadminWidgetState
                     padding: EdgeInsetsDirectional.fromSTEB(30, 0, 0, 0),
                     child: Text(
                       'Check applicant list',
-                      style: FlutterFlowTheme.title1,
+                      style: TextStyle(fontSize: 24),
                     ),
                   )
                 ],
@@ -71,7 +71,8 @@ class _CheckapplicantlistadminWidgetState
                   width: 300,
                   height: 60,
                   color: Color(0xFFF3AE20),
-                  textStyle: FlutterFlowTheme.subtitle2.override(
+                  textStyle: TextStyle(
+                    fontSize: 16,
                     fontFamily: 'Poppins',
                     color: Colors.white,
                   ),
@@ -95,7 +96,8 @@ class _CheckapplicantlistadminWidgetState
                   width: 300,
                   height: 60,
                   color: Color(0xFFF3AE20),
-                  textStyle: FlutterFlowTheme.subtitle2.override(
+                  textStyle: TextStyle(
+                    fontSize: 16,
                     fontFamily: 'Poppins',
                     color: Colors.white,
                   ),
@@ -119,7 +121,8 @@ class _CheckapplicantlistadminWidgetState
                   width: 300,
                   height: 60,
                   color: Color(0xFFF3AE20),
-                  textStyle: FlutterFlowTheme.subtitle2.override(
+                  textStyle: TextStyle(
+                    fontSize: 16,
                     fontFamily: 'Poppins',
                     color: Colors.white,
                   ),

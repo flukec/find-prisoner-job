@@ -12,9 +12,9 @@ class ProfileWidget extends StatefulWidget {
 class _ProfileWidgetState extends State<ProfileWidget> {
   String uploadedFileUrl = '';
   bool _loadingButton1 = false;
-  TextEditingController textController1;
-  TextEditingController emailAddressController;
-  TextEditingController citizenIdController;
+  TextEditingController textController1 = TextEditingController();
+  TextEditingController emailAddressController = TextEditingController();
+  TextEditingController citizenIdController = TextEditingController();
   bool _loadingButton2 = false;
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -63,7 +63,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                     padding: EdgeInsetsDirectional.fromSTEB(30, 0, 0, 0),
                     child: Text(
                       'Profile',
-                      style: FlutterFlowTheme.title1,
+                      style: TextStyle(fontSize: 24),
                     ),
                   )
                 ],
@@ -113,10 +113,10 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                       width: 130,
                       height: 40,
                       color: Colors.white,
-                      textStyle: FlutterFlowTheme.bodyText1.override(
+                      textStyle: TextStyle(
+                        fontSize: 14,
                         fontFamily: 'Poppins',
                         color: Color(0xFFFDCC6E),
-                        fontSize: 14,
                         fontWeight: FontWeight.normal,
                       ),
                       elevation: 2,
@@ -138,10 +138,10 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                 obscureText: false,
                 decoration: InputDecoration(
                   labelText: 'Full Name',
-                  labelStyle: FlutterFlowTheme.bodyText1.override(
+                  labelStyle: TextStyle(
+                    fontSize: 14,
                     fontFamily: 'Poppins',
                     color: Color(0xFF95A1AC),
-                    fontSize: 14,
                     fontWeight: FontWeight.normal,
                   ),
                   enabledBorder: OutlineInputBorder(
@@ -162,10 +162,10 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                   fillColor: Colors.white,
                   contentPadding: EdgeInsetsDirectional.fromSTEB(20, 24, 0, 24),
                 ),
-                style: FlutterFlowTheme.bodyText1.override(
+                style: TextStyle(
+                  fontSize: 14,
                   fontFamily: 'Poppins',
                   color: Color(0xFF14181B),
-                  fontSize: 14,
                   fontWeight: FontWeight.normal,
                 ),
               ),
@@ -177,10 +177,10 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                 obscureText: false,
                 decoration: InputDecoration(
                   labelText: 'Email Address',
-                  labelStyle: FlutterFlowTheme.bodyText1.override(
+                  labelStyle: TextStyle(
+                    fontSize: 14,
                     fontFamily: 'Poppins',
                     color: Color(0xFF95A1AC),
-                    fontSize: 14,
                     fontWeight: FontWeight.normal,
                   ),
                   enabledBorder: OutlineInputBorder(
@@ -201,7 +201,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                   fillColor: Colors.white,
                   contentPadding: EdgeInsetsDirectional.fromSTEB(20, 24, 0, 24),
                 ),
-                style: FlutterFlowTheme.bodyText1.override(
+                style: TextStyle(
                   fontFamily: 'Poppins',
                   color: Color(0xFF14181B),
                   fontSize: 14,
@@ -216,7 +216,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                 obscureText: false,
                 decoration: InputDecoration(
                   labelText: 'Citizen ID',
-                  labelStyle: FlutterFlowTheme.bodyText1.override(
+                  labelStyle: TextStyle(
                     fontFamily: 'Poppins',
                     color: Color(0xFF95A1AC),
                     fontSize: 14,
@@ -240,7 +240,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                   fillColor: Colors.white,
                   contentPadding: EdgeInsetsDirectional.fromSTEB(20, 24, 0, 24),
                 ),
-                style: FlutterFlowTheme.bodyText1.override(
+                style: TextStyle(
                   fontFamily: 'Poppins',
                   color: Color(0xFF14181B),
                   fontSize: 14,
@@ -271,7 +271,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                     width: 340,
                     height: 60,
                     color: Color(0xFFFDCC6E),
-                    textStyle: FlutterFlowTheme.subtitle2.override(
+                    textStyle: TextStyle(
                       fontFamily: 'Poppins',
                       color: Colors.white,
                       fontSize: 16,

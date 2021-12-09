@@ -49,7 +49,7 @@ class _JoblistWidgetState extends State<JoblistWidget> {
                     padding: EdgeInsetsDirectional.fromSTEB(30, 0, 0, 0),
                     child: Text(
                       'Joblist',
-                      style: FlutterFlowTheme.title1,
+                      style: TextStyle(fontSize: 24),
                     ),
                   )
                 ],
@@ -102,16 +102,16 @@ class _JoblistWidgetState extends State<JoblistWidget> {
                                     EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
                                 child: Text(
                                   'wiriya turakit company',
-                                  style: FlutterFlowTheme.bodyText1,
+                                  style: TextStyle(fontSize: 14),
                                 ),
                               ),
                               Text(
                                 'job: Account',
-                                style: FlutterFlowTheme.bodyText1,
+                                style: TextStyle(fontSize: 14),
                               ),
                               Text(
                                 'status',
-                                style: FlutterFlowTheme.bodyText1,
+                                style: TextStyle(fontSize: 14),
                               )
                             ],
                           ),
