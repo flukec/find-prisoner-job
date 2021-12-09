@@ -10,8 +10,8 @@ class AddjobadminWidget extends StatefulWidget {
 }
 
 class _AddjobadminWidgetState extends State<AddjobadminWidget> {
-  TextEditingController textController1;
-  TextEditingController textController2;
+  TextEditingController textController1 = TextEditingController();
+  TextEditingController textController2 = TextEditingController();
   bool _loadingButton = false;
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -36,7 +36,7 @@ class _AddjobadminWidgetState extends State<AddjobadminWidget> {
               child: Row(
                 mainAxisSize: MainAxisSize.max,
                 children: [
-                  FlutterFlowIconButton(
+                  IconButton(
                     borderColor: Colors.transparent,
                     borderRadius: 30,
                     borderWidth: 1,
@@ -59,7 +59,7 @@ class _AddjobadminWidgetState extends State<AddjobadminWidget> {
                     padding: EdgeInsetsDirectional.fromSTEB(30, 0, 0, 0),
                     child: Text(
                       'Addjob',
-                      style: FlutterFlowTheme.title1,
+                      style: TextStyle(fontSize: 24.0),
                     ),
                   )
                 ],
@@ -79,14 +79,14 @@ class _AddjobadminWidgetState extends State<AddjobadminWidget> {
                           padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
                           child: Text(
                             'Job:',
-                            style: FlutterFlowTheme.bodyText1,
+                            style: TextStyle(fontSize: 14.0),
                           ),
                         ),
                         Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(0, 40, 0, 0),
                           child: Text(
                             'Company:',
-                            style: FlutterFlowTheme.bodyText1,
+                            style: TextStyle(fontSize: 14.0),
                           ),
                         )
                       ],
@@ -107,7 +107,7 @@ class _AddjobadminWidgetState extends State<AddjobadminWidget> {
                               obscureText: false,
                               decoration: InputDecoration(
                                 hintText: '[Some hint text...]',
-                                hintStyle: FlutterFlowTheme.bodyText1.override(
+                                hintStyle: TextStyle(fontSize: 14.0,
                                   fontFamily: 'Poppins',
                                   color: Colors.black,
                                 ),
@@ -134,7 +134,8 @@ class _AddjobadminWidgetState extends State<AddjobadminWidget> {
                                 filled: true,
                                 fillColor: Colors.white,
                               ),
-                              style: FlutterFlowTheme.bodyText1.override(
+                              style: TextStyle(
+                                fontSize: 14,
                                 fontFamily: 'Poppins',
                                 color: Colors.black,
                               ),
@@ -151,7 +152,8 @@ class _AddjobadminWidgetState extends State<AddjobadminWidget> {
                               obscureText: false,
                               decoration: InputDecoration(
                                 hintText: '[Some hint text...]',
-                                hintStyle: FlutterFlowTheme.bodyText1.override(
+                                hintStyle: TextStyle(
+                                  fontSize: 14,
                                   fontFamily: 'Poppins',
                                   color: Colors.black,
                                 ),
@@ -172,7 +174,8 @@ class _AddjobadminWidgetState extends State<AddjobadminWidget> {
                                 filled: true,
                                 fillColor: Colors.white,
                               ),
-                              style: FlutterFlowTheme.bodyText1.override(
+                              style: TextStyle(
+                                fontSize: 14.0,
                                 fontFamily: 'Poppins',
                                 color: Colors.black,
                               ),
@@ -206,7 +209,8 @@ class _AddjobadminWidgetState extends State<AddjobadminWidget> {
                   width: 160,
                   height: 50,
                   color: Color(0xFFF3AE20),
-                  textStyle: FlutterFlowTheme.subtitle2.override(
+                  textStyle:TextStyle(
+                    fontSize: 16,
                     fontFamily: 'Poppins',
                     color: Colors.white,
                   ),

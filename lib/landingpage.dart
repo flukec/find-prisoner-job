@@ -5,14 +5,13 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class LandingPageWidget extends StatefulWidget {
-  LandingPageWidget({Key key}) : super(key: key);
+  const LandingPageWidget({Key key}) : super(key: key);
 
   @override
   _LandingPageWidgetState createState() => _LandingPageWidgetState();
 }
 
 class _LandingPageWidgetState extends State<LandingPageWidget> {
-  bool _loadingButton = false;
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -31,7 +30,7 @@ class _LandingPageWidgetState extends State<LandingPageWidget> {
                 children: [
                   Text(
                     'Welcome!\nLet find the job',
-                    style: FlutterFlowTheme.title1,
+                    style: TextStyle(fontSize: 24),
                   ),
                   Padding(
                     padding: EdgeInsetsDirectional.fromSTEB(80, 0, 0, 0),
@@ -63,24 +62,20 @@ class _LandingPageWidgetState extends State<LandingPageWidget> {
                 padding: EdgeInsetsDirectional.fromSTEB(0, 20, 190, 0),
                 child: FFButtonWidget(
                   onPressed: () async {
-                    setState(() => _loadingButton = true);
-                    try {
-                      await Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => JoblistWidget(),
-                        ),
-                      );
-                    } finally {
-                      setState(() => _loadingButton = false);
-                    }
+                    await Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => JoblistWidget(),
+                      ),
+                    );
                   },
                   text: 'Job list',
                   options: FFButtonOptions(
                     width: 130,
                     height: 40,
                     color: Color(0xFFF3AE20),
-                    textStyle: FlutterFlowTheme.subtitle2.override(
+                    textStyle: TextStyle(
+                      fontSize: 16,
                       fontFamily: 'Poppins',
                       color: Colors.white,
                     ),
@@ -90,14 +85,13 @@ class _LandingPageWidgetState extends State<LandingPageWidget> {
                     ),
                     borderRadius: 12,
                   ),
-                  loading: _loadingButton,
                 ),
               ),
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
                 child: Text(
                   'Your  applicant job',
-                  style: FlutterFlowTheme.title3,
+                  style: TextStyle(fontSize: 20),
                 ),
               ),
               Padding(
@@ -144,16 +138,16 @@ class _LandingPageWidgetState extends State<LandingPageWidget> {
                                   EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
                               child: Text(
                                 'wiriya turakit company',
-                                style: FlutterFlowTheme.bodyText1,
+                                style: TextStyle(fontSize: 20.0),
                               ),
                             ),
                             Text(
                               'job: Account',
-                              style: FlutterFlowTheme.bodyText1,
+                              style: TextStyle(fontSize: 20.0),
                             ),
                             Text(
                               'status',
-                              style: FlutterFlowTheme.bodyText1,
+                              style: TextStyle(fontSize: 20.0),
                             )
                           ],
                         ),
@@ -206,16 +200,16 @@ class _LandingPageWidgetState extends State<LandingPageWidget> {
                                   EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
                               child: Text(
                                 'wiriya turakit company',
-                                style: FlutterFlowTheme.bodyText1,
+                                style: TextStyle(fontSize: 14),
                               ),
                             ),
                             Text(
                               'job: Account',
-                              style: FlutterFlowTheme.bodyText1,
+                              style: TextStyle(fontSize: 14),
                             ),
                             Text(
                               'status',
-                              style: FlutterFlowTheme.bodyText1,
+                              style: TextStyle(fontSize: 14),
                             )
                           ],
                         ),

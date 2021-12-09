@@ -29,7 +29,7 @@ class _CheckapplicantadminWidgetState extends State<CheckapplicantadminWidget> {
               child: Row(
                 mainAxisSize: MainAxisSize.max,
                 children: [
-                  FlutterFlowIconButton(
+                  IconButton(
                     borderColor: Colors.transparent,
                     borderRadius: 30,
                     borderWidth: 1,
@@ -52,7 +52,7 @@ class _CheckapplicantadminWidgetState extends State<CheckapplicantadminWidget> {
                     padding: EdgeInsetsDirectional.fromSTEB(30, 0, 0, 0),
                     child: Text(
                       'Applicant',
-                      style: FlutterFlowTheme.title1,
+                      style: TextStyle(fontSize: 24),
                     ),
                   )
                 ],
@@ -79,7 +79,7 @@ class _CheckapplicantadminWidgetState extends State<CheckapplicantadminWidget> {
                                 EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
                             child: Text(
                               'Job:',
-                              style: FlutterFlowTheme.bodyText1,
+                              style: TextStyle(fontSize: 14),
                             ),
                           ),
                           Padding(
@@ -87,7 +87,7 @@ class _CheckapplicantadminWidgetState extends State<CheckapplicantadminWidget> {
                                 EdgeInsetsDirectional.fromSTEB(0, 40, 0, 0),
                             child: Text(
                               'Company:',
-                              style: FlutterFlowTheme.bodyText1,
+                              style: TextStyle(fontSize: 14),
                             ),
                           ),
                           Padding(
@@ -95,7 +95,7 @@ class _CheckapplicantadminWidgetState extends State<CheckapplicantadminWidget> {
                                 EdgeInsetsDirectional.fromSTEB(0, 40, 0, 0),
                             child: Text(
                               'Name:',
-                              style: FlutterFlowTheme.bodyText1,
+                              style: TextStyle(fontSize: 14),
                             ),
                           ),
                           Padding(
@@ -103,7 +103,7 @@ class _CheckapplicantadminWidgetState extends State<CheckapplicantadminWidget> {
                                 EdgeInsetsDirectional.fromSTEB(0, 40, 0, 0),
                             child: Text(
                               'surname:',
-                              style: FlutterFlowTheme.bodyText1,
+                              style: TextStyle(fontSize: 14),
                             ),
                           )
                         ],
@@ -119,7 +119,7 @@ class _CheckapplicantadminWidgetState extends State<CheckapplicantadminWidget> {
                                 EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
                             child: Text(
                               'van driver',
-                              style: FlutterFlowTheme.bodyText1,
+                              style: TextStyle(fontSize: 14),
                             ),
                           ),
                           Padding(
@@ -127,7 +127,7 @@ class _CheckapplicantadminWidgetState extends State<CheckapplicantadminWidget> {
                                 EdgeInsetsDirectional.fromSTEB(0, 40, 0, 0),
                             child: Text(
                               'A  travel',
-                              style: FlutterFlowTheme.bodyText1,
+                              style: TextStyle(fontSize: 14),
                             ),
                           ),
                           Container(
@@ -143,7 +143,7 @@ class _CheckapplicantadminWidgetState extends State<CheckapplicantadminWidget> {
                                 EdgeInsetsDirectional.fromSTEB(0, 40, 0, 0),
                             child: Text(
                               'Mr.bun',
-                              style: FlutterFlowTheme.bodyText1,
+                              style: TextStyle(fontSize: 14.0),
                             ),
                           ),
                           Padding(
@@ -151,7 +151,7 @@ class _CheckapplicantadminWidgetState extends State<CheckapplicantadminWidget> {
                                 EdgeInsetsDirectional.fromSTEB(0, 40, 0, 0),
                             child: Text(
                               'bun',
-                              style: FlutterFlowTheme.bodyText1,
+                              style: TextStyle(fontSize: 14.0),
                             ),
                           )
                         ],
@@ -175,7 +175,8 @@ class _CheckapplicantadminWidgetState extends State<CheckapplicantadminWidget> {
                       width: 130,
                       height: 40,
                       color: Color(0xFF6DBA45),
-                      textStyle: FlutterFlowTheme.subtitle2.override(
+                      textStyle: TextStyle(
+                        fontSize: 16,
                         fontFamily: 'Poppins',
                         color: Colors.white,
                       ),
@@ -198,7 +199,8 @@ class _CheckapplicantadminWidgetState extends State<CheckapplicantadminWidget> {
                         width: 130,
                         height: 40,
                         color: Color(0xFFBF2F2F),
-                        textStyle: FlutterFlowTheme.subtitle2.override(
+                        textStyle: TextStyle(
+                          fontSize: 16,
                           fontFamily: 'Poppins',
                           color: Colors.white,
                         ),

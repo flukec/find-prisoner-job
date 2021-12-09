@@ -3,17 +3,17 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class ApplicantWidget extends StatefulWidget {
-  ApplicantWidget({Key key}) : super(key: key);
+  const ApplicantWidget({Key key}) : super(key: key);
 
   @override
   _ApplicantWidgetState createState() => _ApplicantWidgetState();
 }
 
 class _ApplicantWidgetState extends State<ApplicantWidget> {
-  String dropDownValue1;
-  String dropDownValue2;
-  TextEditingController textController1;
-  TextEditingController textController2;
+  String dropDownValue1 = "choose job";
+  String dropDownValue2 = "choose company";
+  TextEditingController textController1 = TextEditingController();
+  TextEditingController textController2 = TextEditingController();
   bool _loadingButton = false;
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -61,7 +61,8 @@ class _ApplicantWidgetState extends State<ApplicantWidget> {
                     padding: EdgeInsetsDirectional.fromSTEB(30, 0, 0, 0),
                     child: Text(
                       'Applicant',
-                      style: FlutterFlowTheme.title1,
+                      style: TextStyle(
+                        fontSize: 24,
                     ),
                   )
                 ],
@@ -81,28 +82,28 @@ class _ApplicantWidgetState extends State<ApplicantWidget> {
                           padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
                           child: Text(
                             'Job:',
-                            style: FlutterFlowTheme.bodyText1,
+                            style: TextStyle(fontSize: 14.0),
                           ),
                         ),
                         Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(0, 40, 0, 0),
                           child: Text(
                             'Company:',
-                            style: FlutterFlowTheme.bodyText1,
+                            style: TextStyle(fontSize: 14.0),
                           ),
                         ),
                         Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(0, 40, 0, 0),
                           child: Text(
                             'Name:',
-                            style: FlutterFlowTheme.bodyText1,
+                            style: TextStyle(fontSize: 14.0)
                           ),
                         ),
                         Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(0, 40, 0, 0),
                           child: Text(
                             'surname:',
-                            style: FlutterFlowTheme.bodyText1,
+                            style: TextStyle(fontSize: 14.0)
                           ),
                         )
                       ],
@@ -121,7 +122,8 @@ class _ApplicantWidgetState extends State<ApplicantWidget> {
                                 setState(() => dropDownValue1 = val),
                             width: 200,
                             height: 40,
-                            textStyle: FlutterFlowTheme.bodyText1.override(
+                            textStyle: TextStyle(
+                              fontSize: 14,
                               fontFamily: 'Poppins',
                               color: Colors.black,
                             ),
@@ -141,7 +143,8 @@ class _ApplicantWidgetState extends State<ApplicantWidget> {
                                 setState(() => dropDownValue2 = val),
                             width: 200,
                             height: 40,
-                            textStyle: FlutterFlowTheme.bodyText1.override(
+                            textStyle: TextStyle(
+                              fontSize: 14,
                               fontFamily: 'Poppins',
                               color: Colors.black,
                             ),
@@ -163,7 +166,8 @@ class _ApplicantWidgetState extends State<ApplicantWidget> {
                               obscureText: false,
                               decoration: InputDecoration(
                                 hintText: '[Some hint text...]',
-                                hintStyle: FlutterFlowTheme.bodyText1.override(
+                                hintStyle: TextStyle(
+                                  fontSize: 14,
                                   fontFamily: 'Poppins',
                                   color: Colors.black,
                                 ),
@@ -190,7 +194,8 @@ class _ApplicantWidgetState extends State<ApplicantWidget> {
                                 filled: true,
                                 fillColor: Colors.white,
                               ),
-                              style: FlutterFlowTheme.bodyText1.override(
+                              style: TextStyle(
+                                fontSize: 14,
                                 fontFamily: 'Poppins',
                                 color: Colors.black,
                               ),
@@ -207,7 +212,8 @@ class _ApplicantWidgetState extends State<ApplicantWidget> {
                               obscureText: false,
                               decoration: InputDecoration(
                                 hintText: '[Some hint text...]',
-                                hintStyle: FlutterFlowTheme.bodyText1.override(
+                                hintStyle: TextStyle(
+                                  fontSize: 14,
                                   fontFamily: 'Poppins',
                                   color: Colors.black,
                                 ),
@@ -228,7 +234,8 @@ class _ApplicantWidgetState extends State<ApplicantWidget> {
                                 filled: true,
                                 fillColor: Colors.white,
                               ),
-                              style: FlutterFlowTheme.bodyText1.override(
+                              style: TextStyle(
+                                fontSize: 14,
                                 fontFamily: 'Poppins',
                                 color: Colors.black,
                               ),
@@ -252,7 +259,8 @@ class _ApplicantWidgetState extends State<ApplicantWidget> {
                   width: 160,
                   height: 50,
                   color: Color(0xFFF3AE20),
-                  textStyle: FlutterFlowTheme.subtitle2.override(
+                  textStyle: TextStyle(
+                    fontSize: 16,
                     fontFamily: 'Poppins',
                     color: Colors.white,
                   ),
@@ -262,7 +270,6 @@ class _ApplicantWidgetState extends State<ApplicantWidget> {
                   ),
                   borderRadius: 12,
                 ),
-                loading: _loadingButton,
               ),
             )
           ],
@@ -271,3 +278,4 @@ class _ApplicantWidgetState extends State<ApplicantWidget> {
     );
   }
 }
+

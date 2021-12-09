@@ -54,7 +54,7 @@ class _CompanyInterviewlistWidgetState
                     padding: EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
                     child: Text(
                       'Company Interview',
-                      style: FlutterFlowTheme.title1,
+                      style: TextStyle(fontSize: 24),
                     ),
                   )
                 ],
@@ -62,7 +62,7 @@ class _CompanyInterviewlistWidgetState
             ),
             Padding(
               padding: EdgeInsetsDirectional.fromSTEB(0, 30, 0, 0),
-              child: FFButtonWidget(
+              child: ElevateButton(
                 onPressed: () {
                   print('Button pressed ...');
                 },
@@ -71,7 +71,8 @@ class _CompanyInterviewlistWidgetState
                   width: 300,
                   height: 60,
                   color: Color(0xFFF3AE20),
-                  textStyle: FlutterFlowTheme.subtitle2.override(
+                  textStyle: TextStyle(
+                    fontSize: 16,
                     fontFamily: 'Poppins',
                     color: Colors.white,
                   ),
@@ -95,7 +96,8 @@ class _CompanyInterviewlistWidgetState
                   width: 300,
                   height: 60,
                   color: Color(0xFFF3AE20),
-                  textStyle: FlutterFlowTheme.subtitle2.override(
+                  textStyle: TextStyle(
+                    fontSize: 16,
                     fontFamily: 'Poppins',
                     color: Colors.white,
                   ),
@@ -119,7 +121,8 @@ class _CompanyInterviewlistWidgetState
                   width: 300,
                   height: 60,
                   color: Color(0xFFF3AE20),
-                  textStyle: FlutterFlowTheme.subtitle2.override(
+                  textStyle: TextStyle(
+                    fontSize: 16,
                     fontFamily: 'Poppins',
                     color: Colors.white,
                   ),
