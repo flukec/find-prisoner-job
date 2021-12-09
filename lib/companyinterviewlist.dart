@@ -62,79 +62,27 @@ class _CompanyInterviewlistWidgetState
             ),
             Padding(
               padding: EdgeInsetsDirectional.fromSTEB(0, 30, 0, 0),
-              child: ElevateButton(
+              child: ElevatedButton(
                 onPressed: () {
                   print('Button pressed ...');
                 },
-                text: 'Mr.Bun',
-                options: FFButtonOptions(
-                  width: 300,
-                  height: 60,
-                  color: Color(0xFFF3AE20),
-                  textStyle: TextStyle(
-                    fontSize: 16,
-                    fontFamily: 'Poppins',
-                    color: Colors.white,
+                 child: Text(
+                    'Mr.Bun',
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontFamily: 'Poppins',
+                    ),
                   ),
-                  borderSide: BorderSide(
-                    color: Colors.transparent,
-                    width: 1,
-                  ),
-                  borderRadius: 12,
-                ),
-                loading: _loadingButton1,
+                  style: ElevatedButton.styleFrom(
+                    minimumSize: Size(300, 60),
+                    primary: Color(0xFFF3AE20),
+                    onPrimary: Colors.white,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                  ),              
               ),
             ),
-            Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
-              child: FFButtonWidget(
-                onPressed: () {
-                  print('Button pressed ...');
-                },
-                text: 'Mr.Bun',
-                options: FFButtonOptions(
-                  width: 300,
-                  height: 60,
-                  color: Color(0xFFF3AE20),
-                  textStyle: TextStyle(
-                    fontSize: 16,
-                    fontFamily: 'Poppins',
-                    color: Colors.white,
-                  ),
-                  borderSide: BorderSide(
-                    color: Colors.transparent,
-                    width: 1,
-                  ),
-                  borderRadius: 12,
-                ),
-                loading: _loadingButton2,
-              ),
-            ),
-            Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
-              child: FFButtonWidget(
-                onPressed: () {
-                  print('Button pressed ...');
-                },
-                text: 'Mr.Bun',
-                options: FFButtonOptions(
-                  width: 300,
-                  height: 60,
-                  color: Color(0xFFF3AE20),
-                  textStyle: TextStyle(
-                    fontSize: 16,
-                    fontFamily: 'Poppins',
-                    color: Colors.white,
-                  ),
-                  borderSide: BorderSide(
-                    color: Colors.transparent,
-                    width: 1,
-                  ),
-                  borderRadius: 12,
-                ),
-                loading: _loadingButton3,
-              ),
-            )
           ],
         ),
       ),

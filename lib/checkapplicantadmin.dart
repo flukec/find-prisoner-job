@@ -11,8 +11,8 @@ class CheckapplicantadminWidget extends StatefulWidget {
 }
 
 class _CheckapplicantadminWidgetState extends State<CheckapplicantadminWidget> {
-  bool _loadingButton1 = false;
-  bool _loadingButton2 = false;
+  bool isLoading= false;
+  bool isLoading2 = false;
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -166,51 +166,47 @@ class _CheckapplicantadminWidgetState extends State<CheckapplicantadminWidget> {
               child: Row(
                 mainAxisSize: MainAxisSize.max,
                 children: [
-                  FFButtonWidget(
+                  ElevatedButton(
                     onPressed: () {
                       print('Button pressed ...');
                     },
-                    text: 'Pass',
-                    options: FFButtonOptions(
-                      width: 130,
-                      height: 40,
-                      color: Color(0xFF6DBA45),
-                      textStyle: TextStyle(
-                        fontSize: 16,
-                        fontFamily: 'Poppins',
-                        color: Colors.white,
-                      ),
-                      borderSide: BorderSide(
-                        color: Colors.transparent,
-                        width: 1,
-                      ),
-                      borderRadius: 12,
+                       child: Text(
+                    'Pass',
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontFamily: 'Poppins',
                     ),
-                    loading: _loadingButton1,
+                  ),
+                  style: ElevatedButton.styleFrom(
+                    minimumSize: Size(130, 40),
+                    primary: Color(0xFF6DBA45),
+                    onPrimary: Colors.white,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                  ),
                   ),
                   Padding(
                     padding: EdgeInsetsDirectional.fromSTEB(50, 0, 0, 0),
-                    child: FFButtonWidget(
+                    child: ElevatedButton(
                       onPressed: () {
                         print('Button pressed ...');
                       },
-                      text: 'Fail',
-                      options: FFButtonOptions(
-                        width: 130,
-                        height: 40,
-                        color: Color(0xFFBF2F2F),
-                        textStyle: TextStyle(
-                          fontSize: 16,
-                          fontFamily: 'Poppins',
-                          color: Colors.white,
-                        ),
-                        borderSide: BorderSide(
-                          color: Colors.transparent,
-                          width: 1,
-                        ),
-                        borderRadius: 12,
-                      ),
-                      loading: _loadingButton2,
+                        child: Text(
+                    'Fail',
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontFamily: 'Poppins',
+                    ),
+                  ),
+                  style: ElevatedButton.styleFrom(
+                    minimumSize: Size(130, 40),
+                    primary: Color(0xFFBF2F2F),
+                    onPrimary: Colors.white,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                  ),
                     ),
                   )
                 ],

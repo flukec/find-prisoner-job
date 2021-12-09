@@ -59,8 +59,8 @@ class _LandingPageWidgetState extends State<LandingPageWidget> {
                 ],
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0, 20, 190, 0),
-                child: FFButtonWidget(
+                padding: EdgeInsetsDirectional.fromSTEB(0, 20, 190, 0),                
+                child: ElevatedButton(
                   onPressed: () async {
                     await Navigator.push(
                       context,
@@ -69,22 +69,21 @@ class _LandingPageWidgetState extends State<LandingPageWidget> {
                       ),
                     );
                   },
-                  text: 'Job list',
-                  options: FFButtonOptions(
-                    width: 130,
-                    height: 40,
-                    color: Color(0xFFF3AE20),
-                    textStyle: TextStyle(
+                  child: Text(
+                    'Job list',
+                    style: TextStyle(
                       fontSize: 16,
                       fontFamily: 'Poppins',
-                      color: Colors.white,
                     ),
-                    borderSide: BorderSide(
-                      color: Colors.transparent,
-                      width: 1,
-                    ),
-                    borderRadius: 12,
                   ),
+                  style: ElevatedButton.styleFrom(
+                    minimumSize: Size(130, 40),
+                    primary: Color(0xFFF3AE20),
+                    onPrimary: Colors.white,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                  ),      
                 ),
               ),
               Padding(

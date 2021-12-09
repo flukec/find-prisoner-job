@@ -11,11 +11,11 @@ class ProfileWidget extends StatefulWidget {
 
 class _ProfileWidgetState extends State<ProfileWidget> {
   String uploadedFileUrl = '';
-  bool _loadingButton1 = false;
+  bool loadingButton1 = false;
   TextEditingController textController1 = TextEditingController();
   TextEditingController emailAddressController = TextEditingController();
   TextEditingController citizenIdController = TextEditingController();
-  bool _loadingButton2 = false;
+  bool loadingButton2 = false;
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -104,29 +104,27 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                 mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  FFButtonWidget(
+                  ElevatedButton(
                     onPressed: () {
                       print('Button pressed ...');
                     },
-                    text: 'Change Photo',
-                    options: FFButtonOptions(
-                      width: 130,
-                      height: 40,
-                      color: Colors.white,
-                      textStyle: TextStyle(
-                        fontSize: 14,
-                        fontFamily: 'Poppins',
-                        color: Color(0xFFFDCC6E),
-                        fontWeight: FontWeight.normal,
-                      ),
-                      elevation: 2,
-                      borderSide: BorderSide(
-                        color: Colors.transparent,
-                        width: 1,
-                      ),
-                      borderRadius: 8,
+                    child: Text(
+                    'Change Photo',
+                    style: TextStyle(
+                      fontSize: 14,
+                      fontFamily: 'Poppins',
+                      fontWeight: FontWeight.normal,
                     ),
-                    loading: _loadingButton1,
+                  ),
+                  style: ElevatedButton.styleFrom(
+                    elevation: 2,
+                    minimumSize: Size(130, 40),
+                    primary: Color(0xFFF3AE20),
+                    onPrimary: Colors.white,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                  ),                                     
                   )
                 ],
               ),
@@ -252,9 +250,9 @@ class _ProfileWidgetState extends State<ProfileWidget> {
               alignment: AlignmentDirectional(0, 0.05),
               child: Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(0, 24, 0, 0),
-                child: FFButtonWidget(
+                child: ElevatedButton(
                   onPressed: () async {
-                    setState(() => _loadingButton2 = true);
+                    setState(() => loadingButton2 = true);
                     try {
                       await Navigator.push(
                         context,
@@ -263,28 +261,26 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                         ),
                       );
                     } finally {
-                      setState(() => _loadingButton2 = false);
+                      setState(() => loadingButton2 = false);
                     }
                   },
-                  text: 'Save Changes',
-                  options: FFButtonOptions(
-                    width: 340,
-                    height: 60,
-                    color: Color(0xFFFDCC6E),
-                    textStyle: TextStyle(
-                      fontFamily: 'Poppins',
-                      color: Colors.white,
+                  child: Text(
+                    'Save Changes',
+                    style: TextStyle(
                       fontSize: 16,
+                      fontFamily: 'Poppins',
                       fontWeight: FontWeight.normal,
                     ),
-                    elevation: 2,
-                    borderSide: BorderSide(
-                      color: Colors.transparent,
-                      width: 1,
-                    ),
-                    borderRadius: 8,
                   ),
-                  loading: _loadingButton2,
+                  style: ElevatedButton.styleFrom(
+                    elevation: 2,
+                    minimumSize: Size(340, 60),
+                    primary: Color(0xFFF3AE20),
+                    onPrimary: Colors.white,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                  ),                             
                 ),
               ),
             )

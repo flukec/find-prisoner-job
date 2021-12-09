@@ -13,8 +13,8 @@ class _SignupWidgetState extends State<SignupWidget> {
   TextEditingController emailAddressController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   bool passwordVisibility;
-  bool _loadingButton1 = false;
-  bool _loadingButton2 = false;
+  bool loadingButton1 = false;
+  bool loadingButton2 = false;
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -175,9 +175,9 @@ class _SignupWidgetState extends State<SignupWidget> {
                   children: [
                     Padding(
                       padding: EdgeInsetsDirectional.fromSTEB(80, 0, 0, 0),
-                      child: FFButtonWidget(
+                      child: ElevatedButton(
                         onPressed: () async {
-                          setState(() => _loadingButton1 = true);
+                          setState(() => loadingButton1 = true);
                           try {
                             await Navigator.push(
                               context,
@@ -186,28 +186,26 @@ class _SignupWidgetState extends State<SignupWidget> {
                               ),
                             );
                           } finally {
-                            setState(() => _loadingButton1 = false);
+                            setState(() => loadingButton1 = false);
                           }
                         },
-                        text: 'Create Account',
-                        options: FFButtonOptions(
-                          width: 210,
-                          height: 60,
-                          color: Color(0xFFF3AE20),
-                          textStyle: TextStyle(
-                            fontFamily: 'Poppins',
-                            color: Colors.white,
-                            fontSize: 16,
-                            fontWeight: FontWeight.w500,
-                          ),
-                          elevation: 3,
-                          borderSide: BorderSide(
-                            color: Colors.transparent,
-                            width: 1,
-                          ),
-                          borderRadius: 8,
-                        ),
-                        loading: _loadingButton1,
+                        child: Text(
+                    'Create Account',
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontFamily: 'Poppins',
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                  style: ElevatedButton.styleFrom(
+                    elevation: 3,
+                    minimumSize: Size(210, 36),
+                    primary: Color(0xFFF3AE20),
+                    onPrimary: Colors.white,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8),
+                    ),                           
+              ),
                       ),
                     )
                   ],
@@ -228,9 +226,9 @@ class _SignupWidgetState extends State<SignupWidget> {
                         fontWeight: FontWeight.normal,
                       ),
                     ),
-                    FFButtonWidget(
+                    ElevatedButton(
                       onPressed: () async {
-                        setState(() => _loadingButton2 = true);
+                        setState(() => loadingButton2 = true);
                         try {
                           await Navigator.push(
                             context,
@@ -239,28 +237,24 @@ class _SignupWidgetState extends State<SignupWidget> {
                             ),
                           );
                         } finally {
-                          setState(() => _loadingButton2 = false);
+                          setState(() => _oadingButton2 = false);
                         }
                       },
-                      text: 'Login',
-                      options: FFButtonOptions(
-                        width: 70,
-                        height: 30,
-                        color: Color(0x00FFFFFF),
-                        textStyle: TextStyle(
-                          fontFamily: 'Poppins',
-                          color: Color(0xFF39D2C0),
-                          fontSize: 14,
-                          fontWeight: FontWeight.bold,
-                        ),
-                        elevation: 0,
-                        borderSide: BorderSide(
-                          color: Colors.transparent,
-                          width: 1,
-                        ),
-                        borderRadius: 0,
-                      ),
-                      loading: _loadingButton2,
+                      child: Text(
+                    'Login',
+                    style: TextStyle(
+                      fontSize: 14,
+                      fontFamily: 'Poppins',
+                    ),
+                  ),
+                  style: ElevatedButton.styleFrom(
+                    elevation: 0,
+                    minimumSize: Size(70, 30),
+                    onPrimary: Color(0xFF39D2C0),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(0),
+                    ),                           
+              ),
                     )
                   ],
                 ),

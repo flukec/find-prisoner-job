@@ -14,7 +14,7 @@ class _ApplicantWidgetState extends State<ApplicantWidget> {
   String dropDownValue2 = "choose company";
   TextEditingController textController1 = TextEditingController();
   TextEditingController textController2 = TextEditingController();
-  bool _loadingButton = false;
+  bool isLoading = false;
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -250,26 +250,25 @@ class _ApplicantWidgetState extends State<ApplicantWidget> {
             ),
             Padding(
               padding: EdgeInsetsDirectional.fromSTEB(0, 170, 0, 0),
-              child: FFButtonWidget(
+              child: ElevatedButton(
                 onPressed: () {
                   print('Button pressed ...');
                 },
-                text: 'Apply',
-                options: FFButtonOptions(
-                  width: 160,
-                  height: 50,
-                  color: Color(0xFFF3AE20),
-                  textStyle: TextStyle(
-                    fontSize: 16,
-                    fontFamily: 'Poppins',
-                    color: Colors.white,
+                child: Text(
+                    'Apply',
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontFamily: 'Poppins',                  
+                    ),
                   ),
-                  borderSide: BorderSide(
-                    color: Colors.transparent,
-                    width: 1,
+                  style: ElevatedButton.styleFrom(
+                    minimumSize: Size(160, 50),
+                    primary: Color(0xFFF3AE20),
+                    onPrimary: Colors.white,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
                   ),
-                  borderRadius: 12,
-                ),
               ),
             )
           ],

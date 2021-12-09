@@ -140,33 +140,27 @@ class _JoblistadminWidgetState extends State<JoblistadminWidget> {
                 children: [
                   Padding(
                     padding: EdgeInsetsDirectional.fromSTEB(0, 450, 0, 0),
-                    child: FFButtonWidget(
-                      onPressed: () {
-                        print('Button pressed ...');
-                      },
-                      text: 'Add job',
-                      icon: Icon(
-                        Icons.add_box,
-                        size: 15,
-                      ),
-                      options: FFButtonOptions(
-                        width: 300,
-                        height: 70,
-                        color: Color(0xFFF3AE20),
-                        textStyle: TextStyle(
-                          fontSize: 16,
-                          fontFamily: 'Poppins',
-                          color: Colors.white,
-                        ),
-                        borderSide: BorderSide(
-                          color: Colors.transparent,
-                          width: 1,
-                        ),
-                        borderRadius: 12,
-                      ),
-                      loading: _loadingButton,
+                    child: ElevatedButton(
+                onPressed: () {
+                  print('Button pressed ...');
+                },
+                 child: Text(
+                    'Add job',
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontFamily: 'Poppins',
                     ),
-                  )
+                  ),
+                  style: ElevatedButton.styleFrom(
+                    minimumSize: Size(300, 70),
+                    primary: Color(0xFFF3AE20),
+                    onPrimary: Colors.white,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                  ),              
+              ),
+            ),
                 ],
               ),
             )

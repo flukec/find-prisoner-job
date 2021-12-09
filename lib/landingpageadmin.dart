@@ -14,11 +14,11 @@ class LandingpageadminWidget extends StatefulWidget {
 }
 
 class _LandingpageadminWidgetState extends State<LandingpageadminWidget> {
-  bool _loadingButton1 = false;
-  bool _loadingButton2 = false;
-  bool _loadingButton3 = false;
-  bool _loadingButton4 = false;
-  bool _loadingButton5 = false;
+  bool loadingButton1 = false;
+  bool loadingButton2 = false;
+  bool loadingButton3 = false;
+  bool loadingButton4 = false;
+  bool loadingButton5 = false;
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -47,9 +47,9 @@ class _LandingpageadminWidgetState extends State<LandingpageadminWidget> {
                   ),
                   Padding(
                     padding: EdgeInsetsDirectional.fromSTEB(30, 20, 190, 0),
-                    child: FFButtonWidget(
+                    child: ElevatedButton(
                       onPressed: () async {
-                        setState(() => _loadingButton1 = true);
+                        setState(() => loadingButton1 = true);
                         try {
                           await Navigator.push(
                             context,
@@ -58,26 +58,24 @@ class _LandingpageadminWidgetState extends State<LandingpageadminWidget> {
                             ),
                           );
                         } finally {
-                          setState(() => _loadingButton1 = false);
+                          setState(() => loadingButton1 = false);
                         }
                       },
-                      text: 'Job list',
-                      options: FFButtonOptions(
-                        width: 130,
-                        height: 40,
-                        color: Color(0xFFF3AE20),
-                        textStyle: TextStyle(
-                          fontSize: 16,
-                          fontFamily: 'Poppins',
-                          color: Color(0xFFFEFEFE),
-                        ),
-                        borderSide: BorderSide(
-                          color: Colors.transparent,
-                          width: 1,
-                        ),
-                        borderRadius: 12,
-                      ),
-                      loading: _loadingButton1,
+                     child: Text(
+                    'Job list',
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontFamily: 'Poppins',
+                    ),
+                  ),
+                  style: ElevatedButton.styleFrom(
+                    minimumSize: Size(130, 40),
+                    primary: Color(0xFFF3AE20),
+                    onPrimary: Colors.white,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                  ),      
                     ),
                   )
                 ],
@@ -87,9 +85,9 @@ class _LandingpageadminWidgetState extends State<LandingpageadminWidget> {
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
                   children: [
-                    FFButtonWidget(
+                    ElevatedButton(
                       onPressed: () async {
-                        setState(() => _loadingButton2 = true);
+                        setState(() => loadingButton2 = true);
                         try {
                           await Navigator.push(
                             context,
@@ -99,35 +97,33 @@ class _LandingpageadminWidgetState extends State<LandingpageadminWidget> {
                             ),
                           );
                         } finally {
-                          setState(() => _loadingButton2 = false);
+                          setState(() => loadingButton2 = false);
                         }
                       },
-                      text: 'Check Applicant',
-                      options: FFButtonOptions(
-                        width: 320,
-                        height: 90,
-                        color: Color(0xFFF3AE20),
-                        textStyle: TextStyle(
-                          fontSize: 16,
-                          fontFamily: 'Poppins',
-                          color: Color(0xFFFEFEFE),
-                        ),
-                        borderSide: BorderSide(
-                          color: Colors.transparent,
-                          width: 1,
-                        ),
-                        borderRadius: 12,
-                      ),
-                      loading: _loadingButton2,
+                      child: Text(
+                    'Check Applicant',
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontFamily: 'Poppins',
+                    ),
+                  ),
+                  style: ElevatedButton.styleFrom(
+                    minimumSize: Size(320, 90),
+                    primary: Color(0xFFF3AE20),
+                    onPrimary: Colors.white,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                  ),      
                     )
                   ],
                 ),
               ),
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
-                child: FFButtonWidget(
+                child: ElevatedButton(
                   onPressed: () async {
-                    setState(() => _loadingButton3 = true);
+                    setState(() => loadingButton3 = true);
                     try {
                       await Navigator.push(
                         context,
@@ -136,33 +132,31 @@ class _LandingpageadminWidgetState extends State<LandingpageadminWidget> {
                         ),
                       );
                     } finally {
-                      setState(() => _loadingButton3 = false);
+                      setState(() => loadingButton3 = false);
                     }
                   },
-                  text: 'Seminar',
-                  options: FFButtonOptions(
-                    width: 320,
-                    height: 90,
-                    color: Color(0xFFF3AE20),
-                    textStyle: TextStyle(
+                  child: Text(
+                    'Seminar',
+                    style: TextStyle(
                       fontSize: 16,
                       fontFamily: 'Poppins',
-                      color: Color(0xFFFEFEFE),
                     ),
-                    borderSide: BorderSide(
-                      color: Colors.transparent,
-                      width: 1,
-                    ),
-                    borderRadius: 12,
                   ),
-                  loading: _loadingButton3,
+                  style: ElevatedButton.styleFrom(
+                    minimumSize: Size(320, 90),
+                    primary: Color(0xFFF3AE20),
+                    onPrimary: Colors.white,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                  ),      
                 ),
               ),
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
-                child: FFButtonWidget(
+                child: ElevatedButton(
                   onPressed: () async {
-                    setState(() => _loadingButton4 = true);
+                    setState(() => loadingButton4 = true);
                     try {
                       await Navigator.push(
                         context,
@@ -172,33 +166,31 @@ class _LandingpageadminWidgetState extends State<LandingpageadminWidget> {
                         ),
                       );
                     } finally {
-                      setState(() => _loadingButton4 = false);
+                      setState(() => loadingButton4 = false);
                     }
                   },
-                  text: 'Physological Interview',
-                  options: FFButtonOptions(
-                    width: 320,
-                    height: 90,
-                    color: Color(0xFFF3AE20),
-                    textStyle: TextStyle(
+                  child: Text(
+                    'Physological Interview',
+                    style: TextStyle(
                       fontSize: 16,
                       fontFamily: 'Poppins',
-                      color: Color(0xFFFEFEFE),
                     ),
-                    borderSide: BorderSide(
-                      color: Colors.transparent,
-                      width: 1,
-                    ),
-                    borderRadius: 12,
                   ),
-                  loading: _loadingButton4,
+                  style: ElevatedButton.styleFrom(
+                    minimumSize: Size(320, 90),
+                    primary: Color(0xFFF3AE20),
+                    onPrimary: Colors.white,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                  ),      
                 ),
               ),
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
-                child: FFButtonWidget(
+                child: ElevatedButton(
                   onPressed: () async {
-                    setState(() => _loadingButton5 = true);
+                    setState(() => loadingButton5 = true);
                     try {
                       await Navigator.push(
                         context,
@@ -207,26 +199,24 @@ class _LandingpageadminWidgetState extends State<LandingpageadminWidget> {
                         ),
                       );
                     } finally {
-                      setState(() => _loadingButton5 = false);
+                      setState(() => loadingButton5 = false);
                     }
                   },
-                  text: 'Company Interview',
-                  options: FFButtonOptions(
-                    width: 320,
-                    height: 90,
-                    color: Color(0xFFF3AE20),
-                    textStyle: TextStyle(
+                  child: Text(
+                    'Company Interview',
+                    style: TextStyle(
                       fontSize: 16,
                       fontFamily: 'Poppins',
-                      color: Color(0xFFFEFEFE),
                     ),
-                    borderSide: BorderSide(
-                      color: Colors.transparent,
-                      width: 1,
-                    ),
-                    borderRadius: 12,
                   ),
-                  loading: _loadingButton5,
+                  style: ElevatedButton.styleFrom(
+                    minimumSize: Size(320, 90),
+                    primary: Color(0xFFF3AE20),
+                    onPrimary: Colors.white,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                  ),      
                 ),
               )
             ],

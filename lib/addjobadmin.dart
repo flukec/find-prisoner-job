@@ -12,7 +12,7 @@ class AddjobadminWidget extends StatefulWidget {
 class _AddjobadminWidgetState extends State<AddjobadminWidget> {
   TextEditingController textController1 = TextEditingController();
   TextEditingController textController2 = TextEditingController();
-  bool _loadingButton = false;
+  bool isLoading = false;
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -37,15 +37,9 @@ class _AddjobadminWidgetState extends State<AddjobadminWidget> {
                 mainAxisSize: MainAxisSize.max,
                 children: [
                   IconButton(
-                    borderColor: Colors.transparent,
-                    borderRadius: 30,
-                    borderWidth: 1,
-                    buttonSize: 60,
-                    icon: Icon(
-                      Icons.arrow_back,
-                      color: Colors.black,
-                      size: 40,
-                    ),
+                    icon: const Icon(Icons.arrow_back),
+                    color: Colors.black,
+                    iconSize: 40,
                     onPressed: () async {
                       await Navigator.push(
                         context,
@@ -107,7 +101,8 @@ class _AddjobadminWidgetState extends State<AddjobadminWidget> {
                               obscureText: false,
                               decoration: InputDecoration(
                                 hintText: '[Some hint text...]',
-                                hintStyle: TextStyle(fontSize: 14.0,
+                                hintStyle: TextStyle(
+                                  fontSize: 14.0,
                                   fontFamily: 'Poppins',
                                   color: Colors.black,
                                 ),
@@ -189,44 +184,40 @@ class _AddjobadminWidgetState extends State<AddjobadminWidget> {
               ),
             ),
             Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0, 170, 0, 0),
-              child: FFButtonWidget(
-                onPressed: () async {
-                  setState(() => _loadingButton = true);
-                  try {
-                    await Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => JoblistadminWidget(),
-                      ),
-                    );
-                  } finally {
-                    setState(() => _loadingButton = false);
-                  }
-                },
-                text: 'Confirm',
-                options: FFButtonOptions(
-                  width: 160,
-                  height: 50,
-                  color: Color(0xFFF3AE20),
-                  textStyle:TextStyle(
-                    fontSize: 16,
-                    fontFamily: 'Poppins',
-                    color: Colors.white,
+                padding: EdgeInsetsDirectional.fromSTEB(0, 170, 0, 0),
+                child: ElevatedButton(
+                  onPressed: () async {
+                    setState(() => isLoading = true);
+                    try {
+                      await Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => JoblistadminWidget(),
+                        ),
+                      );
+                    } finally {
+                      setState(() => isLoading = false);
+                    }
+                  },
+                  child: Text(
+                    'Confirm',
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontFamily: 'Poppins',
+                    ),
                   ),
-                  borderSide: BorderSide(
-                    color: Colors.transparent,
-                    width: 1,
+                  style: ElevatedButton.styleFrom(
+                    minimumSize: Size(160, 50),
+                    primary: Color(0xFFF3AE20),
+                    onPrimary: Colors.white,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
                   ),
-                  borderRadius: 12,
-                ),
-                loading: _loadingButton,
-              ),
-            )
+                )),
           ],
         ),
       ),
     );
   }
 }
-
