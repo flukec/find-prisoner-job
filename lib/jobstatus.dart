@@ -26,7 +26,7 @@ class _JobstatusWidgetState extends State<JobstatusWidget> {
               child: Row(
                 mainAxisSize: MainAxisSize.max,
                 children: [
-                  FlutterFlowIconButton(
+                  IconButton(
                     borderColor: Colors.transparent,
                     borderRadius: 30,
                     borderWidth: 1,
