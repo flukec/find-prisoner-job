@@ -12,9 +12,9 @@ class CompanyInterviewlistWidget extends StatefulWidget {
 
 class _CompanyInterviewlistWidgetState
     extends State<CompanyInterviewlistWidget> {
-  bool _loadingButton1 = false;
-  bool _loadingButton2 = false;
-  bool _loadingButton3 = false;
+  bool loadingButton1 = false;
+  bool loadingButton2 = false;
+  bool loadingButton3 = false;
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
