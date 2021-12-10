@@ -1,6 +1,6 @@
 {
-    "name": "find_prisoner_job",
-    "short_name": "find_prisoner_job",
+    "name": "final_app",
+    "short_name": "final_app",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
