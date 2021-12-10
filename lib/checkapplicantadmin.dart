@@ -30,15 +30,9 @@ class _CheckapplicantadminWidgetState extends State<CheckapplicantadminWidget> {
                 mainAxisSize: MainAxisSize.max,
                 children: [
                   IconButton(
-                    borderColor: Colors.transparent,
-                    borderRadius: 30,
-                    borderWidth: 1,
-                    buttonSize: 60,
-                    icon: Icon(
-                      Icons.arrow_back,
-                      color: Colors.black,
-                      size: 40,
-                    ),
+                    icon: const Icon(Icons.arrow_back),
+                    color: Colors.black,
+                    iconSize: 40,
                     onPressed: () async {
                       await Navigator.push(
                         context,

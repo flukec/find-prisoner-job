@@ -29,7 +29,7 @@ class _SignupWidgetState extends State<SignupWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: scaffoldKey,
-      backgroundColor: Color(0xFFD7D7D7),
+      backgroundColor: Colors.white,
       body: Padding(
         padding: EdgeInsetsDirectional.fromSTEB(20, 100, 20, 0),
         child: SingleChildScrollView(
@@ -237,7 +237,7 @@ class _SignupWidgetState extends State<SignupWidget> {
                             ),
                           );
                         } finally {
-                          setState(() => _oadingButton2 = false);
+                          setState(() => loadingButton2 = false);
                         }
                       },
                       child: Text(

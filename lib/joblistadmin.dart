@@ -11,7 +11,7 @@ class JoblistadminWidget extends StatefulWidget {
 }
 
 class _JoblistadminWidgetState extends State<JoblistadminWidget> {
-  bool _loadingButton = false;
+  bool loadingButton = false;
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -28,16 +28,10 @@ class _JoblistadminWidgetState extends State<JoblistadminWidget> {
               child: Row(
                 mainAxisSize: MainAxisSize.max,
                 children: [
-                  FlutterFlowIconButton(
-                    borderColor: Colors.transparent,
-                    borderRadius: 30,
-                    borderWidth: 1,
-                    buttonSize: 60,
-                    icon: Icon(
-                      Icons.arrow_back,
-                      color: Colors.black,
-                      size: 40,
-                    ),
+                  IconButton(
+                    icon: const Icon(Icons.arrow_back),
+                    color: Colors.black,
+                    iconSize: 40,
                     onPressed: () async {
                       await Navigator.push(
                         context,
@@ -114,20 +108,14 @@ class _JoblistadminWidgetState extends State<JoblistadminWidget> {
                             ],
                           ),
                         ),
-                        FlutterFlowIconButton(
-                          borderColor: Colors.transparent,
-                          borderRadius: 30,
-                          borderWidth: 1,
-                          buttonSize: 60,
-                          icon: Icon(
-                            Icons.delete,
-                            color: Colors.black,
-                            size: 30,
-                          ),
-                          onPressed: () {
+                        IconButton(
+                    icon: const Icon(Icons.delete),
+                    color: Colors.black,
+                    iconSize: 30,
+                    onPressed: () {
                             print('IconButton pressed ...');
                           },
-                        )
+                  ),
                       ],
                     ),
                   ),

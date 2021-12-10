@@ -223,26 +223,25 @@ class _LandingPageWidgetState extends State<LandingPageWidget> {
                   children: [
                     Padding(
                       padding: EdgeInsetsDirectional.fromSTEB(250, 260, 0, 0),
-                      child: FlutterFlowIconButton(
-                        borderColor: Colors.transparent,
-                        borderRadius: 30,
-                        borderWidth: 1,
-                        buttonSize: 60,
-                        fillColor: Color(0xFFF3AE20),
-                        icon: Icon(
-                          Icons.add,
-                          color: Colors.black,
-                          size: 30,
-                        ),
-                        onPressed: () async {
+                      child: CircleAvatar(
+                radius: 30,
+                backgroundColor:  Color(0xFFF3AE20),
+                child: IconButton(
+                  icon: Icon(
+                    Icons.add,
+                    color: Colors.black,
+                    size: 30,
+                  ),
+                    onPressed: () async {
                           await Navigator.push(
                             context,
                             MaterialPageRoute(
                               builder: (context) => ApplicantWidget(),
-                            ),
+                              ),
                           );
-                        },
-                      ),
+                  },
+                ),
+              ),                    
                     )
                   ],
                 ),

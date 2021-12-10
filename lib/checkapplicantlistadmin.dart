@@ -1,3 +1,4 @@
+import 'checkapplicantadmin.dart';
 import 'landingpageadmin.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -29,16 +30,10 @@ class _CheckapplicantlistadminWidgetState
               child: Row(
                 mainAxisSize: MainAxisSize.max,
                 children: [
-                  FlutterFlowIconButton(
-                    borderColor: Colors.transparent,
-                    borderRadius: 30,
-                    borderWidth: 1,
-                    buttonSize: 60,
-                    icon: Icon(
-                      Icons.arrow_back,
-                      color: Colors.black,
-                      size: 40,
-                    ),
+                  IconButton(
+                    icon: const Icon(Icons.arrow_back),
+                    color: Colors.black,
+                    iconSize: 40,
                     onPressed: () async {
                       await Navigator.push(
                         context,
