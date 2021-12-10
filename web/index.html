@@ -41,5 +41,32 @@
     }
   </script>
   <script src="main.dart.js" type="application/javascript"></script>
+
+<!--  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>-->
+<!--  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>-->
+<!--  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>-->
+<!--  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>-->
+<!--  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>-->
+
+  <script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyBCY4hbqCg1Xs5wc7SlB4etTpr6S2DgyMs",
+      authDomain: "anotherchance-df3cc.firebaseapp.com",
+      projectId: "anotherchance-df3cc",
+      storageBucket: "anotherchance-df3cc.appspot.com",
+      messagingSenderId: "879570579499",
+      appId: "1:879570579499:web:7a026df6d5c85bfe0bba6e"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+  </script>
+
 </body>
 </html>
