@@ -1,11 +1,11 @@
 import 'applicant.dart';
 import 'joblist.dart';
-import profile.dart';
+import 'profile.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class LandingPageWidget extends StatefulWidget {
-  const LandingPageWidget({Key key}) : super(key: key);
+  const LandingPageWidget({Key? key}) : super(key: key);
 
   @override
   _LandingPageWidgetState createState() => _LandingPageWidgetState();

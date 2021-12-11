@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class CheckapplicantadminWidget extends StatefulWidget {
-  CheckapplicantadminWidget({Key key}) : super(key: key);
+  CheckapplicantadminWidget({ Key? key}) : super(key: key);
 
   @override
   _CheckapplicantadminWidgetState createState() =>
@@ -37,7 +37,7 @@ class _CheckapplicantadminWidgetState extends State<CheckapplicantadminWidget> {
                       await Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => CheckappicantlistadminWidget(),
+                          builder: (context) => CheckapplicantlistadminWidget(),
                         ),
                       );
                     },

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class CompanyInterviewWidget extends StatefulWidget {
-  CompanyInterviewWidget({Key key}) : super(key: key);
+  CompanyInterviewWidget({Key? key}) : super(key: key);
 
   @override
   _CompanyInterviewWidgetState createState() => _CompanyInterviewWidgetState();

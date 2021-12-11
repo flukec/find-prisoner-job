@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class SeminarlistWidget extends StatefulWidget {
-  SeminarlistWidget({Key key}) : super(key: key);
+  SeminarlistWidget({ Key? key}) : super(key: key);
 
   @override
   _SeminarlistWidgetState createState() => _SeminarlistWidgetState();

@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class CheckapplicantlistadminWidget extends StatefulWidget {
-  CheckapplicantlistadminWidget({Key key}) : super(key: key);
+  CheckapplicantlistadminWidget({ Key? key}) : super(key: key);
 
   @override
   _CheckapplicantlistadminWidgetState createState() =>

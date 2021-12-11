@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class PhysologicalInterviewWidget extends StatefulWidget {
-  PhysologicalInterviewWidget({Key key}) : super(key: key);
+  PhysologicalInterviewWidget({ Key? key}) : super(key: key);
 
   @override
   _PhysologicalInterviewWidgetState createState() =>

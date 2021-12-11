@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class ProfileWidget extends StatefulWidget {
-  ProfileWidget({Key key}) : super(key: key);
+  ProfileWidget({Key? key}) : super(key: key);
 
   @override
   _ProfileWidgetState createState() => _ProfileWidgetState();
@@ -22,7 +22,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
   void initState() {
     super.initState();
     citizenIdController = TextEditingController();
-    emailAddressController = TextEditingController(text: currentUserEmail);
+    emailAddressController = TextEditingController(text: 'currentUserEmail');
     textController1 = TextEditingController();
   }
 

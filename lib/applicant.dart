@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class ApplicantWidget extends StatefulWidget {
-  const ApplicantWidget({Key key}) : super(key: key);
+  const ApplicantWidget({Key? key}) : super(key: key);
 
   @override
   _ApplicantWidgetState createState() => _ApplicantWidgetState();

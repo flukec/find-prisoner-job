@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class SeminarconfirmWidget extends StatefulWidget {
-  SeminarconfirmWidget({Key key}) : super(key: key);
+  SeminarconfirmWidget({ Key? key}) : super(key: key);
 
   @override
   _SeminarconfirmWidgetState createState() => _SeminarconfirmWidgetState();

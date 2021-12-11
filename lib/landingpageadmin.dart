@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class LandingpageadminWidget extends StatefulWidget {
-  LandingpageadminWidget({Key key}) : super(key: key);
+  LandingpageadminWidget({Key? key}) : super(key: key);
 
   @override
   _LandingpageadminWidgetState createState() => _LandingpageadminWidgetState();
@@ -93,7 +93,7 @@ class _LandingpageadminWidgetState extends State<LandingpageadminWidget> {
                             context,
                             MaterialPageRoute(
                               builder: (context) =>
-                                  CheckappicantlistadminWidget(),
+                                  CheckapplicantlistadminWidget(),
                             ),
                           );
                         } finally {

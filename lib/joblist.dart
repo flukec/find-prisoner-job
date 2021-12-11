@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class JoblistWidget extends StatefulWidget {
-  JoblistWidget({Key key}) : super(key: key);
+  JoblistWidget({Key? key}) : super(key: key);
 
   @override
   _JoblistWidgetState createState() => _JoblistWidgetState();

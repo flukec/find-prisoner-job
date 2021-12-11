@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class SignupWidget extends StatefulWidget {
-  SignupWidget({Key key}) : super(key: key);
+  SignupWidget({ Key? key}) : super(key: key);
 
   @override
   _SignupWidgetState createState() => _SignupWidgetState();
@@ -12,7 +12,7 @@ class SignupWidget extends StatefulWidget {
 class _SignupWidgetState extends State<SignupWidget> {
   TextEditingController emailAddressController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
-  bool passwordVisibility;
+  bool passwordVisibility = false;
   bool loadingButton1 = false;
   bool loadingButton2 = false;
   final scaffoldKey = GlobalKey<ScaffoldState>();

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class AddjobadminWidget extends StatefulWidget {
-  AddjobadminWidget({Key key}) : super(key: key);
+  AddjobadminWidget({ Key? key}) : super(key: key);
 
   @override
   _AddjobadminWidgetState createState() => _AddjobadminWidgetState();
