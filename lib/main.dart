@@ -67,13 +67,13 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  final String user = 'hjbI9lUI8tV6icyxiAB8';
   //สำหรับ get****************************************
   final Stream<QuerySnapshot> _appsStream = FirebaseFirestore.instance
       .collection('applicants')
-      .snapshots(); //for getting
+      .where('userID', isEqualTo: 'hjbI9lUI8tV6icyxiAB8')
+      .snapshots();
   //CollectionReference applicants = FirebaseFirestore.instance.collection('applicants');
-
-  final String user = 'hjbI9lUI8tV6icyxiAB8';
   int _counter = 0;
 
   void _incrementCounter() {
@@ -161,7 +161,8 @@ class _MyHomePageState extends State<MyHomePage> {
             Expanded(
               child: //สำหรับ get ที่เปลี่ยนไปเรื่อยๆ******************************************
                   StreamBuilder<QuerySnapshot>(
-                stream: _appsStream,
+                stream:
+                _appsStream,
                 builder: (BuildContext context,
                     AsyncSnapshot<QuerySnapshot> snapshot) {
                   if (snapshot.hasError) {
@@ -176,11 +177,9 @@ class _MyHomePageState extends State<MyHomePage> {
                           width: 300.0, // Change as per your requirement
                           child: ListView(
                             scrollDirection: Axis.vertical,
-                            children: snapshot.data!.docs
-                                .map((DocumentSnapshot document) {
+                            children: snapshot.data!.docs.map((DocumentSnapshot document) {
                               var doc_id = document.id;
-                              Map<String, dynamic> data =
-                                  document.data()! as Map<String, dynamic>;
+                              Map<String, dynamic> data = document.data()! as Map<String, dynamic>;
                               // print(data);
                               // print(data["jobID"]);
                               return Container(
