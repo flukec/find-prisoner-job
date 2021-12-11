@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "879570579499",
+    "project_id": "anotherchance-df3cc",
+    "storage_bucket": "anotherchance-df3cc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:879570579499:android:0f90e4118574dc870bba6e",
+        "android_client_info": {
+          "package_name": "integrate2.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "879570579499-9346f0l38rrrvrv1g83jbfl83n00v076.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDTug0YSCIA6Bk0rJmFPlGbGGVq9YCvzpk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "879570579499-9346f0l38rrrvrv1g83jbfl83n00v076.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
