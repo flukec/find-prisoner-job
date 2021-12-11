@@ -17,18 +17,17 @@ void main() async {
   await Firebase.initializeApp(
     // Replace with actual values
     options: FirebaseOptions(
-      // apiKey: "XXX",
-      // appId: "XXX",
-      // messagingSenderId: "XXX",
-      // projectId: "XXX",
-      //
+        // apiKey: "XXX",
+        // appId: "XXX",
+        // messagingSenderId: "XXX",
+        // projectId: "XXX",
+        //
         apiKey: "AIzaSyBCY4hbqCg1Xs5wc7SlB4etTpr6S2DgyMs",
         authDomain: "anotherchance-df3cc.firebaseapp.com",
         projectId: "anotherchance-df3cc",
         storageBucket: "anotherchance-df3cc.appspot.com",
         messagingSenderId: "879570579499",
-        appId: "1:879570579499:web:7a026df6d5c85bfe0bba6e"
-    ),
+        appId: "1:879570579499:web:7a026df6d5c85bfe0bba6e"),
   );
   runApp(MyApp());
 }
@@ -52,8 +51,8 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home:
-      // LoginWidget(),
-      MyHomePage(title: 'Flutter Demo Home Page'),
+          // LoginWidget(),
+          MyHomePage(title: 'Flutter Demo Home Page'),
       // FirstRoute(),
     );
   }
@@ -69,10 +68,12 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   //สำหรับ get****************************************
-  final Stream<QuerySnapshot> _appsStream = FirebaseFirestore.instance.collection('applicants').snapshots(); //for getting
+  final Stream<QuerySnapshot> _appsStream = FirebaseFirestore.instance
+      .collection('applicants')
+      .snapshots(); //for getting
   //CollectionReference applicants = FirebaseFirestore.instance.collection('applicants');
 
-  final String user='hjbI9lUI8tV6icyxiAB8';
+  final String user = 'hjbI9lUI8tV6icyxiAB8';
   int _counter = 0;
 
   void _incrementCounter() {
@@ -108,7 +109,10 @@ class _MyHomePageState extends State<MyHomePage> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => SecondRoutePage(counter: _counter, title: '',),
+                    builder: (context) => SecondRoutePage(
+                      counter: _counter,
+                      title: '',
+                    ),
                   ),
                 );
               },
@@ -120,22 +124,22 @@ class _MyHomePageState extends State<MyHomePage> {
                 // }
                 onPressed: () {
                   //สำหรับ add ***************************************************
-                  FirebaseFirestore.instance.collection('applicants').add(
-                      {
-                        "applicant" : 0,
-                        "interview1" : 0,
-                        "interview2" : 0,
-                        "interview2Des" : 0,
-                        "interview2Des" : "TESTTEST",
-                        "jobID" : 'Rx27NISLdNSXqVgllxqQ',
-                        "notify" : false,
-                        "semID" : "",
-                        "seminar" : 0,
-                        "userID" : this.user,
-                      }
-                  )
-                  .then((value) => {print("Added "+value.id)})
-                  .catchError((error) => {print("Failed to add: $error")});
+                  FirebaseFirestore.instance
+                      .collection('applicants')
+                      .add({
+                        "applicant": 0,
+                        "interview1": 0,
+                        "interview2": 0,
+                        "interview2Des": 0,
+                        "interview2Des": "TESTTEST",
+                        "jobID": 'Rx27NISLdNSXqVgllxqQ',
+                        "notify": false,
+                        "semID": "",
+                        "seminar": 0,
+                        "userID": this.user,
+                      })
+                      .then((value) => {print("Added " + value.id)})
+                      .catchError((error) => {print("Failed to add: $error")});
 
                   // firestoreInstance.collection("users").add(
                   //     {
@@ -153,65 +157,81 @@ class _MyHomePageState extends State<MyHomePage> {
                   // ).then((value){
                   //   print(value.id);
                   // });
-
-                }
-            ),
+                }),
             Expanded(
               child: //สำหรับ get ที่เปลี่ยนไปเรื่อยๆ******************************************
-              StreamBuilder<QuerySnapshot>(
+                  StreamBuilder<QuerySnapshot>(
                 stream: _appsStream,
-                builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
+                builder: (BuildContext context,
+                    AsyncSnapshot<QuerySnapshot> snapshot) {
                   if (snapshot.hasError) {
                     return Text('Something went wrong');
                   }
-
                   if (snapshot.connectionState == ConnectionState.waiting) {
                     return Text("Loading");
                   }
+                  return SingleChildScrollView(
+                      child: Container(
+                          height: 500.0, // Change as per your requirement
+                          width: 300.0, // Change as per your requirement
+                          child: ListView(
+                            scrollDirection: Axis.vertical,
+                            children: snapshot.data!.docs
+                                .map((DocumentSnapshot document) {
+                              var doc_id = document.id;
+                              Map<String, dynamic> data =
+                                  document.data()! as Map<String, dynamic>;
+                              // print(data);
+                              // print(data["jobID"]);
+                              return Container(
+                                  height:
+                                      30.0, // Change as per your requirement
+                                  width:
+                                      300.0, // Change as per your requirement
+                                  child: ListView(
+                                      scrollDirection: Axis.horizontal,
+                                      children: <Widget>[
+                                        Text(
+                                            "ID: ${doc_id}, JobID: ${data['jobID']}, applicant: ${data['applicant']}"),
+                                        //Update ********************************************************************************
+                                        ElevatedButton(
+                                          child: const Text('Update'),
+                                          onPressed: () async {
+                                            int number = await _getNumber(
+                                                data['applicant']);
 
-                  return ListView(
-                    children: snapshot.data!.docs.map((DocumentSnapshot document) {
-                      var doc_id=document.id;
-                      Map<String, dynamic> data = document.data()! as Map<String, dynamic>;
-                      print(data);
-                      print(data["jobID"]);
-                      return
+                                            FirebaseFirestore.instance
+                                                .collection('applicants')
+                                                .doc(doc_id)
+                                                .update({'applicant': number})
+                                                .then((value) =>
+                                                    print("User Updated"))
+                                                .catchError((error) => print(
+                                                    "Failed to update user: $error"));
+                                          },
+                                        ),
+                                        //Delete *********************************************************************************
+                                        ElevatedButton(
+                                          child: const Text('Delete'),
+                                          onPressed: () {
+                                            FirebaseFirestore.instance
+                                                .collection('applicants')
+                                                .doc(doc_id)
+                                                .delete()
+                                                .then((value) =>
+                                                    print("Apps Deleted"))
+                                                .catchError((error) => print(
+                                                    "Failed to delete apps: $error"));
+                                          },
+                                        ),
+                                      ]));
 
-                      Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: <Widget>[
-                            Text("ID: ${doc_id}, JobID: ${data['jobID']}, applicant: ${data['applicant']}"),
-                            //Update ********************************************************************************
-                            ElevatedButton(
-                              child: const Text('Update'),
-                              onPressed: () async {
-
-                                int number = await _getNumber(data['applicant']);
-
-                                FirebaseFirestore.instance.collection('applicants').doc(doc_id)
-                                    .update({'applicant': number})
-                                    .then((value) => print("User Updated"))
-                                    .catchError((error) => print("Failed to update user: $error"));
-                              },
-                            ),
-                            //Delete *********************************************************************************
-                            ElevatedButton(
-                              child: const Text('Delete'),
-                              onPressed: () {
-                                FirebaseFirestore.instance.collection('applicants').doc(doc_id)
-                                    .delete()
-                                    .then((value) => print("Apps Deleted"))
-                                    .catchError((error) => print("Failed to delete apps: $error"));
-                              },
-                            ),
-                          ]
-                      );
-                      // return ListTile(
-                      //   title: Text(doc_id),
-                      //   subtitle: Text(data['jobID']),
-                      // );
-                    }).toList(),
-                  );
+                              // return ListTile(
+                              //   title: Text(doc_id),
+                              //   subtitle: Text(data['jobID']),
+                              // );
+                            }).toList(),
+                          )));
                 },
               ),
             ),
@@ -227,72 +247,66 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   Future<int> _getNumber(int number) async {
-    int valueText=number;
+    int valueText = number;
     return await showDialog(
       context: context,
       barrierDismissible: false,
       builder: (BuildContext context) {
-        return
-          AlertDialog(
-            title: Text('Test Update'),
-            content: SingleChildScrollView(
+        return AlertDialog(
+          title: Text('Test Update'),
+          content: SingleChildScrollView(
               child: Container(
                   height: 100.0, // Change as per your requirement
                   width: 300.0, // Change as per your requirement
-                  child: ListView(
-                      children: [
-                        TextFormField(
-                            // initialValue: number.toString(),
-                            onChanged: (value) {
-                              setState(() {
-                                valueText = int. parse(value);
-                              });
-                            },
-                            controller: TextEditingController(text: number.toString()),
-                            keyboardType: TextInputType.number,
-                            inputFormatters: <TextInputFormatter>[
-                              FilteringTextInputFormatter.digitsOnly
-                            ],
-                            decoration: InputDecoration(
-                                labelText: "number",
-                                hintText: "any number",
-                                icon: Icon(Icons.calculate)
-                            )
-                        ),
-                        ElevatedButton(
-                            onPressed: () {
-                              Navigator.pop(context, valueText);
-                            },
-                            style: ElevatedButton.styleFrom(
-                                minimumSize: Size(103, 30),
-                                primary: Colors.grey,
-                                padding: EdgeInsets.symmetric(
-                                  horizontal: 30,
-                                  vertical: 8,
-                                ),
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: new BorderRadius.circular(5.0))),
-                            child: Text(
-                              'Update',
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 14,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            )
-                        ),
-                      ])
-              )
-            ),
-          );
+                  child: ListView(children: [
+                    TextFormField(
+                        // initialValue: number.toString(),
+                        onChanged: (value) {
+                          setState(() {
+                            valueText = int.parse(value);
+                          });
+                        },
+                        controller:
+                            TextEditingController(text: number.toString()),
+                        keyboardType: TextInputType.number,
+                        inputFormatters: <TextInputFormatter>[
+                          FilteringTextInputFormatter.digitsOnly
+                        ],
+                        decoration: InputDecoration(
+                            labelText: "number",
+                            hintText: "any number",
+                            icon: Icon(Icons.calculate))),
+                    ElevatedButton(
+                        onPressed: () {
+                          Navigator.pop(context, valueText);
+                        },
+                        style: ElevatedButton.styleFrom(
+                            minimumSize: Size(103, 30),
+                            primary: Colors.grey,
+                            padding: EdgeInsets.symmetric(
+                              horizontal: 30,
+                              vertical: 8,
+                            ),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: new BorderRadius.circular(5.0))),
+                        child: Text(
+                          'Update',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 14,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        )),
+                  ]))),
+        );
       },
     );
   }
-
 }
 
 class SecondRoutePage extends StatefulWidget {
-  SecondRoutePage({Key? key, required this.title, required this.counter}) : super(key: key);
+  SecondRoutePage({Key? key, required this.title, required this.counter})
+      : super(key: key);
   final String title;
   final int counter;
 
