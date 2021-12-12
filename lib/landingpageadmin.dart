@@ -1,7 +1,7 @@
 import 'checkapplicantlistadmin.dart';
 import 'companyinterviewlist.dart';
 import 'joblistadmin.dart';
-import 'profile.dart';
+import 'login.dart';
 import 'physologicalinterviewlist.dart';
 import 'seminarlist.dart';
 import 'package:flutter/material.dart';
@@ -39,37 +39,46 @@ class _LandingpageadminWidgetState extends State<LandingpageadminWidget> {
                   Align(
                     alignment: AlignmentDirectional(-0.9, 0),
                     child: Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
+                      padding: EdgeInsetsDirectional.fromSTEB(10, 30, 0, 0),
                       child: Text(
                         'Welcome to\ncheck page',
                         style: TextStyle(fontSize: 24),
                       ),
                     ),
                   ),
-                    Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(100, 0, 0, 0),
-                    child: InkWell(
-                      onTap: () async {
-                        await Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => ProfileWidget(),
-                          ),
-                        );
-                      },
-                      child: Container(
-                        width: 50,
-                        height: 50,
-                        clipBehavior: Clip.antiAlias,
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                        ),
-                        child: Image.asset(
-                          'assets/images/blank-profile-picture-973460_1280.png',
-                        ),
+                  Align(
+              alignment: AlignmentDirectional(0, 0.05),
+              child: Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(50, 20, 0, 0),
+                child: ElevatedButton(
+                  onPressed: () async {
+                    await Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => LoginWidget(),
                       ),
+                      );                    
+                  },
+                  child: Text(
+                    'Log out',
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontFamily: 'Poppins',
+                      fontWeight: FontWeight.normal,
                     ),
                   ),
+                  style: ElevatedButton.styleFrom(
+                    elevation: 2,
+                    minimumSize: Size(130, 40),
+                    primary: Color(0xFFF3AE20),
+                    onPrimary: Colors.white,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                  ),                             
+                ),
+              ),
+            ),                             
                    Column(
                 mainAxisSize: MainAxisSize.max,
                 children: [
