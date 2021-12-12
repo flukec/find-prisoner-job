@@ -161,8 +161,7 @@ class _JoblistWidgetState extends State<JoblistWidget> {
                                                       "interview1": 0,
                                                       "interview2": 0,
                                                       "interview2Des": 0,
-                                                      "interview2Des":
-                                                          "No detail.",
+                                                      "interview2Des": "No detail.",
                                                       "jobID": docID,
                                                       "notify": false,
                                                       "semDes": "No detail.",
@@ -374,7 +373,7 @@ class _JoblistWidgetState extends State<JoblistWidget> {
                                       borderRadius:
                                           new BorderRadius.circular(12))),
                               child: Text(
-                                'Choose',
+                                'Apply',
                                 style: TextStyle(
                                   color: Colors.white,
                                   fontSize: 16,

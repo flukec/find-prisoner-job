@@ -1,7 +1,5 @@
-// import 'applicant.dart';
-// import 'joblist.dart';
-// import 'profile.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:final_app/screen/profile.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -21,6 +19,12 @@ class _LandingPageWidgetState extends State<LandingPageWidget> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   final auth = FirebaseAuth.instance;
+
+  final Map<String, int> colorMap = {
+    "Fail": 0xFFBF2F2F,
+    "Pending": 0xFFF3AE20,
+    "Employed": 0xFF6DBA45,
+  };
 
   // Future<String> getCurrentUID() async {
   //   return (auth.currentUser)!.uid;
@@ -50,26 +54,35 @@ class _LandingPageWidgetState extends State<LandingPageWidget> {
   //   // print('test3 ${oneJob}');
   // }
 
-  String appStatus (Map<String, dynamic> data) {
+  List<String> appStatus (Map<String, dynamic> data) {
+    List<String> text=[];
     if(data['applicant']==2){
-      return "Applicant - Fail";
+      text.add("Applicant"); text.add("Fail");
+      return text;
     }else if(data['applicant']==0){
-      return "Applicant - Pending";
+      text.add("Applicant"); text.add("Pending");
+      return text;
     }else{
       if(data['seminar']==0){
-        return "Seminar - Pending";
+        text.add("Seminar"); text.add("Pending");
+        return text;
       }else{
         if(data['interview1']==2){
-          return "Psychological Interview - Fail";
+          text.add("Psychological"); text.add("Fail");
+          return text;
         }else if(data['interview1']==0){
-          return "Psychological Interview - Pending";
+          text.add("Psychological"); text.add("Pending");
+          return text;
         }else{
           if(data['interview2']==2){
-            return "Company Interview - Fail";
+            text.add("Company Interview"); text.add("Fail");
+            return text;
           }else if(data['interview2']==0){
-            return "Company Interview - Pending";
+            text.add("Company Interview"); text.add("Pending");
+            return text;
           }else{
-            return "Employed";
+            text.add(""); text.add("Employed");
+            return text;
           }
         }
       }
@@ -96,15 +109,16 @@ class _LandingPageWidgetState extends State<LandingPageWidget> {
                   ),
                   Padding(
                     padding: EdgeInsetsDirectional.fromSTEB(80, 0, 0, 0),
-                    child: InkWell(
+                    child:
+                    // Container(
+                    InkWell(
                       onTap: () async {
-                        ////***********************************************************************************************************************
-                        // await Navigator.push(
-                        //   context,
-                        //   MaterialPageRoute(
-                        //     builder: (context) => ProfileWidget(),
-                        //   ),
-                        // );
+                        await Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => ProfileWidget(),
+                          ),
+                        );
                       },
                       child: Container(
                         width: 50,
@@ -114,42 +128,42 @@ class _LandingPageWidgetState extends State<LandingPageWidget> {
                           shape: BoxShape.circle,
                         ),
                         child: Image.asset(
-                          'assets/images/blank-profile-picture-973460_1280.png',
+                          'assets/blank-profile-picture-973460_1280.png',
                         ),
                       ),
                     ),
                   )
                 ],
               ),
-              Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0, 20, 190, 0),                
-                child: ElevatedButton(
-                  onPressed: () async {
-                    ////***********************************************************************************************************************
-                    // await Navigator.push(
-                    //   context,
-                    //   MaterialPageRoute(
-                    //     builder: (context) => JoblistWidget(),
-                    //   ),
-                    // );
-                  },
-                  child: Text(
-                    'Job list',
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontFamily: 'Poppins',
-                    ),
-                  ),
-                  style: ElevatedButton.styleFrom(
-                    minimumSize: Size(130, 40),
-                    primary: Color(0xFFF3AE20),
-                    onPrimary: Colors.white,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                  ),      
-                ),
-              ),
+              // Padding(
+              //   padding: EdgeInsetsDirectional.fromSTEB(0, 20, 190, 0),
+              //   child: ElevatedButton(
+              //     onPressed: () async {
+              //       ////***********************************************************************************************************************
+              //       // await Navigator.push(
+              //       //   context,
+              //       //   MaterialPageRoute(
+              //       //     builder: (context) => JoblistWidget(),
+              //       //   ),
+              //       // );
+              //     },
+              //     child: Text(
+              //       'Job list',
+              //       style: TextStyle(
+              //         fontSize: 16,
+              //         fontFamily: 'Poppins',
+              //       ),
+              //     ),
+              //     style: ElevatedButton.styleFrom(
+              //       minimumSize: Size(130, 40),
+              //       primary: Color(0xFFF3AE20),
+              //       onPrimary: Colors.white,
+              //       shape: RoundedRectangleBorder(
+              //         borderRadius: BorderRadius.circular(12),
+              //       ),
+              //     ),
+              //   ),
+              // ),
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
                 child: Text(
@@ -175,11 +189,17 @@ class _LandingPageWidgetState extends State<LandingPageWidget> {
                       return Text("Loading");
                     }
 
-                    // Map<String, dynamic> apps = Map();
-                    // snapshot1.data!.docs.forEach((DocumentSnapshot document) {
-                    //   apps[document.id] = document.data()! as Map<String, dynamic>;
-                    //       // apps.fromJson(c.documentID, c.data);
-                    // });
+
+
+                    bool isPending=false;
+                    Map<String, dynamic> apps = Map();
+                    snapshot1.data!.docs.forEach((DocumentSnapshot document) {
+                      apps[document.id] = document.data()! as Map<String, dynamic>;
+                          // apps.fromJson(c.documentID, c.data);
+                      if(appStatus(apps[document.id])[1]=="Pending"){
+                        isPending=true;
+                      }
+                    });
 
                     return StreamBuilder<QuerySnapshot> (
                       stream: FirebaseFirestore.instance
@@ -209,120 +229,182 @@ class _LandingPageWidgetState extends State<LandingPageWidget> {
                         return
                       SingleChildScrollView(
                         child:
-
-                        Container(
-                            height: 500.0, // Change as per your requirement
-                            width: 300.0, // Change as per your requirement
-                            child: ListView(
-                              scrollDirection: Axis.vertical,
-                              children: snapshot1.data!.docs
-                                  .map((DocumentSnapshot document) {
-                                // var doc_id = document.id;
-                                Map<String, dynamic> apps =
-                                document.data()! as Map<String, dynamic>;
-
-                                // print("TESTHERE1");
-                                //
-                                // print(apps['jobID']);
-                                // print(jobs[apps['jobID']]);
-                                // print(jobs[apps['jobID']]['comName']);
-                                //
-                                // print("TESTHERE2");
-                                return Container(
-                                    height:
-                                    90.0, // Change as per your requirement
-                                    width:
-                                    350.0, // Change as per your requirement
+                            Column(
+                              children: [
+                                Container(
+                                    height: 600.0, // Change as per your requirement
+                                    width: 350.0, // Change as per your requirement
                                     child: ListView(
-                                        scrollDirection: Axis.horizontal,
-                                        children: <Widget>[
+                                      scrollDirection: Axis.vertical,
+                                      children: snapshot1.data!.docs
+                                          .map((DocumentSnapshot document) {
+                                        // var doc_id = document.id;
+                                        Map<String, dynamic> apps =
+                                        document.data()! as Map<String, dynamic>;
 
-                                          //////////////////////////////////////INNER
-                                          Padding(
-                                            padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
-                                            child:
-                                            GestureDetector(
-                                              onTap: () async {
-                                                // List<dynamic> lists=[];
-                                                // lists.add(apps); lists.add(jobs[apps['jobID']]); lists.add('https://picsum.photos/seed/263/600');
-                                                await Navigator.pushReplacement(context,
-                                                    MaterialPageRoute(
-                                                      builder: (context) => JobstatusWidget(
-                                                          app: apps,
-                                                          job: jobs[apps['jobID']],
-                                                          image: 'https://picsum.photos/seed/263/600',
-                                                        // list: lists
-                                                      ),
-                                                    ),
-                                                  );
-                                                },
-                                              child: Container(
-                                                width: 350,
-                                                height: 90,
-                                                decoration: BoxDecoration(
-                                                  color: Color(0xFFEEE9E9),
-                                                  boxShadow: [
-                                                    BoxShadow(
-                                                      color: Colors.transparent,
-                                                    )
-                                                  ],
-                                                  borderRadius: BorderRadius.circular(50),
-                                                  border: Border.all(
-                                                    color: Colors.transparent,
-                                                  ),
-                                                ),
-                                                child: Row(
-                                                  mainAxisSize: MainAxisSize.max,
-                                                  children: [
-                                                    Padding(
-                                                      padding: EdgeInsetsDirectional.fromSTEB(30, 0, 0, 0),
-                                                      child: Container(
-                                                        width: 60,
-                                                        height: 60,
-                                                        clipBehavior: Clip.antiAlias,
-                                                        decoration: BoxDecoration(
-                                                          shape: BoxShape.circle,
-                                                        ),
-                                                        child: Image.network(
-                                                          'https://picsum.photos/seed/263/600',
-                                                        ),
-                                                      ),
-                                                    ),
-                                                    Padding(
-                                                      padding: EdgeInsetsDirectional.fromSTEB(30, 0, 0, 0),
-                                                      child: Column(
-                                                        mainAxisSize: MainAxisSize.max,
-                                                        children: [
-                                                          Padding(
-                                                            padding:
-                                                            EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
-                                                            child: Text(
-                                                              '${jobs[apps['jobID']]['comName']}',
-                                                              style: TextStyle(fontSize: 14),
+                                        // print("TESTHERE1");
+                                        //
+                                        // print(apps['jobID']);
+                                        // print(jobs[apps['jobID']]);
+                                        // print(jobs[apps['jobID']]['comName']);
+                                        //
+                                        // print("TESTHERE2");
+                                        return Container(
+                                            height:
+                                            90.0, // Change as per your requirement
+                                            width:
+                                            350.0, // Change as per your requirement
+                                            child: ListView(
+                                                scrollDirection: Axis.horizontal,
+                                                children: <Widget>[
+
+                                                  //////////////////////////////////////INNER
+                                                  Padding(
+                                                    padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
+                                                    child:
+                                                    GestureDetector(
+                                                      onTap: () async {
+                                                        // List<dynamic> lists=[];
+                                                        // lists.add(apps); lists.add(jobs[apps['jobID']]); lists.add('https://picsum.photos/seed/263/600');
+                                                        (appStatus(apps)[1]=="Fail")? null:
+                                                        await Navigator.pushReplacement(context,
+                                                          MaterialPageRoute(
+                                                            builder: (context) => JobstatusWidget(
+                                                              app: apps,
+                                                              job: jobs[apps['jobID']],
+                                                              image: 'https://picsum.photos/seed/263/600',
+                                                              // list: lists
                                                             ),
                                                           ),
-                                                          Text(
-                                                            'job: ${jobs[apps['jobID']]['jobName']}',
-                                                            style: TextStyle(fontSize: 14),
+                                                        );
+                                                      },
+                                                      child: Container(
+                                                        width: 350,
+                                                        height: 90,
+                                                        decoration: BoxDecoration(
+                                                          color: Color(0xFFEEE9E9),
+                                                          boxShadow: [
+                                                            BoxShadow(
+                                                              color: Colors.transparent,
+                                                            )
+                                                          ],
+                                                          borderRadius: BorderRadius.circular(50),
+                                                          border: Border.all(
+                                                            color: Colors.transparent,
                                                           ),
-                                                          Text(
-                                                            'status: ${appStatus(apps)}',
-                                                            style: TextStyle(fontSize: 14),
-                                                          )
-                                                        ],
+                                                        ),
+                                                        child: Row(
+                                                          mainAxisSize: MainAxisSize.max,
+                                                          children: [
+                                                            Padding(
+                                                              padding: EdgeInsetsDirectional.fromSTEB(30, 0, 0, 0),
+                                                              child: Container(
+                                                                width: 60,
+                                                                height: 60,
+                                                                clipBehavior: Clip.antiAlias,
+                                                                decoration: BoxDecoration(
+                                                                  shape: BoxShape.circle,
+                                                                ),
+                                                                child: Image.network(
+                                                                  'https://picsum.photos/seed/263/600',
+                                                                ),
+                                                              ),
+                                                            ),
+                                                            Padding(
+                                                              padding: EdgeInsetsDirectional.fromSTEB(30, 0, 0, 0),
+                                                              child: Column(
+                                                                mainAxisSize: MainAxisSize.max,
+                                                                children: [
+                                                                  Padding(
+                                                                    padding:
+                                                                    EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
+                                                                    child: Text(
+                                                                      '${jobs[apps['jobID']]['comName']}',
+                                                                      style: TextStyle(fontSize: 14),
+                                                                    ),
+                                                                  ),
+                                                                  Text(
+                                                                    'job: ${jobs[apps['jobID']]['jobName']}',
+                                                                    style: TextStyle(fontSize: 14),
+                                                                  ),
+                                                                  Text.rich(
+                                                                      TextSpan(
+                                                                          text: 'status: ',
+                                                                          style: TextStyle(fontSize: 14),
+                                                                          children: <InlineSpan>[
+                                                                            TextSpan(
+                                                                                text: '${appStatus(apps)[0]}',
+                                                                                style: TextStyle(fontSize: 14, color:Colors.black),
+                                                                                children: <InlineSpan>[
+                                                                                  TextSpan(
+                                                                                      text: ' - ',
+                                                                                      style: TextStyle(fontSize: 14, color:Colors.black),
+                                                                                      children: <InlineSpan>[
+                                                                                        TextSpan(
+                                                                                          text: '${appStatus(apps)[1]}',
+                                                                                          style: TextStyle(fontSize: 14, color:Color(colorMap[appStatus(apps)[1]]!)),
+
+                                                                                        )
+                                                                                      ]
+                                                                                  )
+                                                                                ]
+                                                                            )
+                                                                          ]
+                                                                      )
+                                                                  ),
+                                                                ],
+                                                              ),
+                                                            ),
+                                                          ],
+                                                        ),
                                                       ),
                                                     ),
-                                                  ],
-                                                ),
-                                              ),
-                                            ),
+                                                  ),
+
+                                                  //////////////////////////////////////INNER
+                                                ]));
+
+                                      }).toList(),
+                                    )),
+
+                                Column(
+                                  mainAxisSize: MainAxisSize.max,
+                                  children: [
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(250, 0, 0, 0),
+                                      child: CircleAvatar(
+                                        radius: 30,
+                                        backgroundColor:(isPending)? Colors.grey:Color(0xFFF3AE20),
+                                        child: IconButton(
+                                          icon: Icon(
+                                            Icons.add,
+                                            color: Colors.black,
+                                            size: 30,
                                           ),
+                                          onPressed: () async {
+                                            // print((auth.currentUser)!.uid);
+                                            ////***********************************************************************************************************************
+                                            (isPending)? null:
+                                            await Navigator.pushReplacement(
+                                              context,
+                                              MaterialPageRoute(
+                                                // builder: (context) => ApplicantWidget(),
+                                                builder: (context) => JoblistWidget(),
+                                              ),
+                                            );
 
-                                          //////////////////////////////////////INNER
-                                        ]));
+                                          },
+                                        ),
+                                      ),
+                                    )
+                                  ],
+                                ),
 
-                              }).toList(),
-                            )));
+                              ],
+                            )
+
+
+                      );
                       },
                     );
                   },
@@ -456,36 +538,9 @@ class _LandingPageWidgetState extends State<LandingPageWidget> {
               // ),
               // Expanded(
               //   child:
-                Column(
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(250, 0, 0, 0),
-                      child: CircleAvatar(
-                radius: 30,
-                backgroundColor:  Color(0xFFF3AE20),
-                child: IconButton(
-                  icon: Icon(
-                    Icons.add,
-                    color: Colors.black,
-                    size: 30,
-                  ),
-                    onPressed: () async {
-                      // print((auth.currentUser)!.uid);
-                      ////***********************************************************************************************************************
-                          await Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(
-                              // builder: (context) => ApplicantWidget(),
-                              builder: (context) => JoblistWidget(),
-                              ),
-                          );
-                  },
-                ),
-              ),                    
-                    )
-                  ],
-                ),
+              //////////////////////////////////////////
+
+              //////////////////////////////////////////
               // )
             ],
           ),

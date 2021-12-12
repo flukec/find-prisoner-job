@@ -25,6 +25,12 @@ class _JobstatusWidgetState extends State<JobstatusWidget> {
   Map<String, dynamic> job;
   String image;
 
+  final Map<String, int> colorMap = {
+    "Fail": 0xFFBF2F2F,
+    "Pending": 0xFFF3AE20,
+    "Passed": 0xFF6DBA45,
+  };
+
   @override
   void initState() {
     super.initState();
@@ -164,11 +170,22 @@ class _JobstatusWidgetState extends State<JobstatusWidget> {
                       ),
                       Padding(
                         padding: EdgeInsetsDirectional.fromSTEB(0, 0, 70, 0),
-                        child: Text(
-                          'Status: ${stageStatus(app['applicant'])}',
-                          textAlign: TextAlign.start,
-                          style: TextStyle(fontSize: 20.0),
+                        child:
+
+                        Text.rich(
+                            TextSpan(
+                                text: 'Status: ',
+                                style: TextStyle(fontSize: 20.0),
+                                children: <InlineSpan>[
+                                  TextSpan(
+                                    text: '${stageStatus(app['applicant'])}',
+                                    style: TextStyle(fontSize: 20.0, color:Color(colorMap[stageStatus(app['applicant'])]!)),
+
+                                  )
+                                ]
+                            )
                         ),
+
                       ),
                     ],
                   ),
@@ -197,10 +214,21 @@ class _JobstatusWidgetState extends State<JobstatusWidget> {
                         'Seminar',
                         style: TextStyle(fontSize: 20.0),
                       ),
-                      Text(
-                        'Status: ${stageStatus(app['seminar'])}',
-                        style: TextStyle(fontSize: 20.0),
+
+                      Text.rich(
+                          TextSpan(
+                              text: 'Status: ',
+                              style: TextStyle(fontSize: 20.0),
+                              children: <InlineSpan>[
+                                TextSpan(
+                                  text: '${stageStatus(app['seminar'])}',
+                                  style: TextStyle(fontSize: 20.0, color:Color(colorMap[stageStatus(app['seminar'])]!)),
+
+                                )
+                              ]
+                          )
                       ),
+
                     ],
                   ),
                   Padding(
@@ -256,10 +284,22 @@ class _JobstatusWidgetState extends State<JobstatusWidget> {
                       ),
                       Padding(
                         padding: EdgeInsetsDirectional.fromSTEB(0, 0, 150, 0),
-                        child: Text(
-                          'Status: ${stageStatus(app['interview1'])}',
-                          style: TextStyle(fontSize: 20.0),
+                        child:
+
+                        Text.rich(
+                            TextSpan(
+                                text: 'Status: ',
+                                style: TextStyle(fontSize: 20.0),
+                                children: <InlineSpan>[
+                                  TextSpan(
+                                    text: '${stageStatus(app['interview1'])}',
+                                    style: TextStyle(fontSize: 20.0, color:Color(colorMap[stageStatus(app['interview1'])]!)),
+
+                                  )
+                                ]
+                            )
                         ),
+
                       ),
                     ],
                   ),
@@ -290,10 +330,22 @@ class _JobstatusWidgetState extends State<JobstatusWidget> {
                       ),
                       Padding(
                         padding: EdgeInsetsDirectional.fromSTEB(0, 0, 100, 0),
-                        child: Text(
-                          'Status: ${stageStatus(app['interview2'])}',
-                          style: TextStyle(fontSize: 20.0),
+                        child:
+
+                        Text.rich(
+                            TextSpan(
+                                text: 'Status: ',
+                                style: TextStyle(fontSize: 20.0),
+                                children: <InlineSpan>[
+                                  TextSpan(
+                                    text: '${stageStatus(app['interview2'])}',
+                                    style: TextStyle(fontSize: 20.0, color:Color(colorMap[stageStatus(app['interview2'])]!)),
+
+                                  )
+                                ]
+                            )
                         ),
+
                       ),
                     ],
                   ),
