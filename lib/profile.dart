@@ -1,4 +1,5 @@
 import 'landingpage.dart';
+import 'login.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -277,7 +278,40 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                   ),                             
                 ),
               ),
-            )
+            ),
+            Align(
+              alignment: AlignmentDirectional(0, 0.05),
+              child: Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(0, 24, 0, 0),
+                child: ElevatedButton(
+                  onPressed: () async {
+                    await Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => LoginWidget(),
+                      ),
+                      );                    
+                  },
+                  child: Text(
+                    'Log out',
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontFamily: 'Poppins',
+                      fontWeight: FontWeight.normal,
+                    ),
+                  ),
+                  style: ElevatedButton.styleFrom(
+                    elevation: 2,
+                    minimumSize: Size(160, 60),
+                    primary: Color(0xFFF3AE20),
+                    onPrimary: Colors.white,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                  ),                             
+                ),
+              ),
+            ),          
           ],
         ),
       ),
