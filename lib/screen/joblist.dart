@@ -271,7 +271,8 @@ class _JoblistWidgetState extends State<JoblistWidget> {
                       margin: const EdgeInsets.all(15.0),
                       padding: const EdgeInsets.all(3.0),
                       decoration: BoxDecoration(
-                          border: Border.all(color: Colors.blueAccent)
+                        border: Border.all(color: Color(0xFFF3AE20)),
+                        borderRadius: new BorderRadius.circular(8),
                       ),
                       child: Text(jobs['jobDes']),
                     ),
@@ -293,54 +294,52 @@ class _JoblistWidgetState extends State<JoblistWidget> {
                     //         hintText: "any number",
                     //         icon: Icon(Icons.calculate))
                     // ),
-              Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: <Widget>[
-                    ElevatedButton(
-                        onPressed: () {
-                          Navigator.pop(context, false);
-                        },
-                        style: ElevatedButton.styleFrom(
-                            minimumSize: Size(103, 30),
-                            primary: Colors.grey,
-                            padding: EdgeInsets.symmetric(
-                              horizontal: 30,
-                              vertical: 8,
-                            ),
-                            shape: RoundedRectangleBorder(
-                                borderRadius: new BorderRadius.circular(5.0))),
-                        child: Text(
-                          'Cancel',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 14,
-                            fontWeight: FontWeight.bold,
+                    Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: <Widget>[
+                          ElevatedButton(
+                              onPressed: () {
+                                Navigator.pop(context, false);
+                              },
+                              style: ElevatedButton.styleFrom(
+                                  minimumSize: Size(130, 40),
+                                  primary: Color(0xFFBF2F2F),
+                                  padding: EdgeInsets.symmetric(
+                                    horizontal: 30,
+                                    vertical: 8,
+                                  ),
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: new BorderRadius.circular(12))),
+                              child: Text(
+                                'Cancel',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 16,
+                                ),
+                              )
                           ),
-                        )
-                    ),
-                    ElevatedButton(
-                        onPressed: () {
-                          Navigator.pop(context, true);
-                        },
-                        style: ElevatedButton.styleFrom(
-                            minimumSize: Size(103, 30),
-                            primary: Colors.red,
-                            padding: EdgeInsets.symmetric(
-                              horizontal: 30,
-                              vertical: 8,
-                            ),
-                            shape: RoundedRectangleBorder(
-                                borderRadius: new BorderRadius.circular(5.0))),
-                        child: Text(
-                          'Choose',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 14,
-                            fontWeight: FontWeight.bold,
+                          ElevatedButton(
+                              onPressed: () {
+                                Navigator.pop(context, true);
+                              },
+                              style: ElevatedButton.styleFrom(
+                                  minimumSize: Size(130, 40),
+                                  primary: Color(0xFF6DBA45),
+                                  padding: EdgeInsets.symmetric(
+                                    horizontal: 30,
+                                    vertical: 8,
+                                  ),
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: new BorderRadius.circular(12))),
+                              child: Text(
+                                'Choose',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 16,
+                                ),
+                              )
                           ),
-                        )
-                    ),
-                  ]),
+                        ]),
                   ]))),
         );
       },
