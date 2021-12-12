@@ -328,54 +328,6 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
-  // Function<void> _getJobs(String a) {
-  //   // List<dynamic> joblist=[];
-  //   Map<String, dynamic> joblist2=new Map();
-  //   FirebaseFirestore.instance
-  //       .collection('jobs')
-  //       .get()
-  //       .then((QuerySnapshot querySnapshot){
-  //         querySnapshot.docs.forEach((doc){
-  //           joblist2[doc.id] = doc.data();
-  //         // print(doc.data());
-  //       });
-  //       print("test1");
-  //       print(joblist2);
-  //       return joblist2;
-  //   });
-  //   print("test2");
-  //   print(joblist2);
-  //   return joblist2;
-  // }
-
-  Future<void> _getJobs() async {
-    // String uid = FirebaseAuth.instance.currentUser.uid;
-    Map<String, dynamic> joblist2=new Map();
-    await FirebaseFirestore.instance
-        .collection('jobs')
-        .get()
-        .then((QuerySnapshot querySnapshot){
-      querySnapshot.docs.forEach((doc){
-        if(doc.exists) { // this will check availability of document
-          joblist2[doc.id] = doc.data();
-        }else{
-        }
-      });
-      print("test1");
-      print(joblist2);
-      jobs=joblist2;
-      // return joblist2;
-    });
-    // if(doc.exists) { // this will check availability of document
-    //   branch = doc.data()['Branch'];
-    //   semester = doc.data()['Semester'];
-    // }else{
-    //   branch = "User is not available";
-    //   semester = "User is not available";
-    // }
-    setState((){});
-  }
-
   Future<int> _getNumber(int number) async {
     int valueText = number;
     return await showDialog(
@@ -437,65 +389,6 @@ class _MyHomePageState extends State<MyHomePage> {
 
 }
 
-class UserInformation extends StatefulWidget {
-  @override
-  _UserInformationState createState() => _UserInformationState();
-}
-
-class _UserInformationState extends State<UserInformation> {
-  final Stream<QuerySnapshot> _appStream = FirebaseFirestore.instance.collection('applicants').snapshots();
-  final Stream<QuerySnapshot> _jobStream = FirebaseFirestore.instance.collection('jobs').snapshots();
-
-  @override
-  Widget build(BuildContext context) {
-    return StreamBuilder<QuerySnapshot>(
-      stream: _appStream,
-      builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot1) {
-
-        if (snapshot1.connectionState == ConnectionState.waiting) {
-          return Text("Loading");
-        }
-
-        return StreamBuilder<QuerySnapshot>(
-          stream: _jobStream,
-          builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot2) {
-
-            Map<String, dynamic> data1;
-            if (snapshot1.connectionState == ConnectionState.waiting) {
-              return Text("Loading");
-            }
-
-
-            Map<String, dynamic> data2;
-
-            snapshot1.data!.docs.map((DocumentSnapshot document) {
-              data1 = document.data()! as Map<String, dynamic>;
-            });
-            snapshot2.data!.docs.map((DocumentSnapshot document) {
-              data2 = document.data()! as Map<String, dynamic>;
-            });
-
-            return ListView(
-              children: snapshot1.data!.docs.map((DocumentSnapshot document) {
-                Map<String, dynamic> data = document.data()! as Map<String, dynamic>;
-                snapshot2.data!.docs.map((DocumentSnapshot document) {
-                  Map<String, dynamic> data2 = document.data()! as Map<String, dynamic>;
-
-
-                });
-                return ListTile(
-                  title: Text(data['full_name']),
-                  subtitle: Text(data['company']),
-                );
-              }).toList(),
-            );
-
-          },
-        );
-      },
-    );
-  }
-}
 class SecondRoutePage extends StatefulWidget {
   SecondRoutePage({Key? key, required this.title, required this.counter})
       : super(key: key);
