@@ -102,7 +102,8 @@ class _ApplicantWidgetState extends State<ApplicantWidget> {
                         )
                       ],
                     ),
-                  ),
+                  ),             
+                  
                   Padding(
                     padding: EdgeInsetsDirectional.fromSTEB(40, 0, 0, 0),
                     child: Column(
@@ -110,92 +111,60 @@ class _ApplicantWidgetState extends State<ApplicantWidget> {
                       children: [
                         Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
-                          child: FlutterFlowDropDown(
-                            options: ['Option 1'].toList(),
-                            onChanged: (val) =>
-                                setState(() => dropDownValue1 = val),
+                          child: DropdownButton<String>(
+                          value: dropDownValue1 ,
+                          icon: const Icon(Icons.arrow_downward),
+                          elevation: 2,
+                          style: const TextStyle(color: Colors.black,fontSize: 14,fontFamily: 'Poppins',),
+                          underline: Container(
                             width: 200,
                             height: 40,
-                            textStyle: TextStyle(
-                              fontSize: 14,
-                              fontFamily: 'Poppins',
-                              color: Colors.black,
-                            ),
-                            fillColor: Colors.white,
-                            elevation: 2,
-                            borderColor: Colors.transparent,
-                            borderWidth: 0,
-                            borderRadius: 0,
-                            margin: EdgeInsetsDirectional.fromSTEB(8, 4, 8, 4),
+                            color: Color(0xFFF3AE20),
+                            
                           ),
-                        ),
+                          onChanged: (String? newValue) {
+                            setState(() {
+                              dropDownValue1 = "choose job";
+                            });
+                          },
+                          items: <String>['One', 'Two', 'Free', 'Four']
+                              .map<DropdownMenuItem<String>>((String value) {
+                            return DropdownMenuItem<String>(
+                              value: value,
+                              child: Text(value),
+                            );
+                          }).toList(),
+                          ),
+                        ),                
+
                         Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
-                          child: FlutterFlowDropDown(
-                            options: ['Option 1'].toList(),
-                            onChanged: (val) =>
-                                setState(() => dropDownValue2 = val),
+                          child: DropdownButton<String>(
+                          value: dropDownValue2 ,
+                          icon: const Icon(Icons.arrow_downward),
+                          elevation: 2,
+                          style: const TextStyle(color: Colors.black,fontSize: 14,fontFamily: 'Poppins',),
+                          underline: Container(
                             width: 200,
                             height: 40,
-                            textStyle: TextStyle(
-                              fontSize: 14,
-                              fontFamily: 'Poppins',
-                              color: Colors.black,
-                            ),
-                            fillColor: Colors.white,
-                            elevation: 2,
-                            borderColor: Colors.transparent,
-                            borderWidth: 0,
-                            borderRadius: 0,
-                            margin: EdgeInsetsDirectional.fromSTEB(8, 4, 8, 4),
+                            color: Color(0xFFF3AE20),
+                            
+                          ),
+                          onChanged: (String? newValue) {
+                            setState(() {
+                              dropDownValue2 = "choose company";
+                            });
+                          },
+                          items: <String>['One', 'Two', 'Free', 'Four']
+                              .map<DropdownMenuItem<String>>((String value) {
+                            return DropdownMenuItem<String>(
+                              value: value,
+                              child: Text(value),
+                            );
+                          }).toList(),
                           ),
                         ),
-                        Container(
-                          width: 200,
-                          child: Padding(
-                            padding:
-                                EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
-                            child: TextFormField(
-                              controller: textController1,
-                              obscureText: false,
-                              decoration: InputDecoration(
-                                hintText: '[Some hint text...]',
-                                hintStyle: TextStyle(
-                                  fontSize: 14,
-                                  fontFamily: 'Poppins',
-                                  color: Colors.black,
-                                ),
-                                enabledBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(
-                                    color: Color(0x00000000),
-                                    width: 1,
-                                  ),
-                                  borderRadius: const BorderRadius.only(
-                                    topLeft: Radius.circular(4.0),
-                                    topRight: Radius.circular(4.0),
-                                  ),
-                                ),
-                                focusedBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(
-                                    color: Color(0x00000000),
-                                    width: 1,
-                                  ),
-                                  borderRadius: const BorderRadius.only(
-                                    topLeft: Radius.circular(4.0),
-                                    topRight: Radius.circular(4.0),
-                                  ),
-                                ),
-                                filled: true,
-                                fillColor: Colors.white,
-                              ),
-                              style: TextStyle(
-                                fontSize: 14,
-                                fontFamily: 'Poppins',
-                                color: Colors.black,
-                              ),
-                            ),
-                          ),
-                        ),
+
                         Container(
                           width: 200,
                           child: Padding(
