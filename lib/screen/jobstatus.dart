@@ -3,19 +3,32 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class JobstatusWidget extends StatefulWidget {
-  const JobstatusWidget({  Key? key, required Map<String, dynamic> this.app}) : super(key: key);
+  const JobstatusWidget({  Key? key, required Map<String, dynamic> this.app, required Map<String, dynamic> this.job, required String this.image}) : super(key: key);
+  // const JobstatusWidget({  Key? key, required List<dynamic> this.list}) : super(key: key);
   final Map<String, dynamic> app;
+  final Map<String, dynamic> job;
+  final String image;
+  // final List<dynamic> list;
 
   @override
-  _JobstatusWidgetState createState() => _JobstatusWidgetState(app);
+  _JobstatusWidgetState createState() => _JobstatusWidgetState(app,job,image);
 }
 
 class _JobstatusWidgetState extends State<JobstatusWidget> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
-  Map<String, dynamic> app;
+  // List<dynamic> list;
 
-  _JobstatusWidgetState(this.app);
+  _JobstatusWidgetState( this.app, this.job, this.image );
+
+  Map<String, dynamic> app;
+  Map<String, dynamic> job;
+  String image;
+
+  @override
+  void initState() {
+    super.initState();
+  }
 
   String stageStatus (int status) {
     if(status==0){
@@ -55,11 +68,74 @@ class _JobstatusWidgetState extends State<JobstatusWidget> {
                     },
                   ),
                   Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(30, 0, 0, 0),
-                    child: Text(
-                      'Jobstatus',
-                      style: TextStyle(fontSize: 24.0),
-                    ),
+                    padding: EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
+                    child: Row(
+                      children: [
+                        Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(0, 0, 30, 0),
+                        child:
+                        Container(
+                              width: 60,
+                              height: 60,
+                              clipBehavior:
+                              Clip.antiAlias,
+                              decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                              ),
+                              child: Image.network(
+                                'https://picsum.photos/seed/263/600',
+                              ),
+                            ),
+                        ),
+                        Column(
+                          children: [
+                            Text('${job['comName']}',style: TextStyle(
+                              fontSize: 24,
+                            ),),
+                            Text('${job['jobName']}',style: TextStyle(
+                              fontSize: 20,
+                            ),)
+                          ],
+                        )
+                      ],
+                    )
+
+
+
+                    // ListTile(
+                    //   title:Text('Job Status'),
+                    //   subtitle: Text('Sub'),
+                    // ),
+
+                    // Text('Job Status',style: TextStyle(
+                    //   fontSize: 24,
+                    // ),),
+                    // ListTile(
+                    //   leading:
+                    //   Container(
+                    //     width: 60,
+                    //     height: 60,
+                    //     clipBehavior:
+                    //     Clip.antiAlias,
+                    //     decoration: BoxDecoration(
+                    //       shape: BoxShape.circle,
+                    //     ),
+                    //     child: Image.network(
+                    //       'https://picsum.photos/seed/263/600',
+                    //     ),
+                    //   ),
+                    //   title:
+                    //   Text('TITLE'),
+                    //   // Text(job['comName']),
+                    //   subtitle:
+                    //   Text('SUBTITLE'),
+                    //   // Text(job['comName']),
+                    //   // trailing: Icon(Icons.more_vert),
+                    // )
+                    // Text(
+                    //   'Jobstatus',
+                    //   style: TextStyle(fontSize: 24.0),
+                    // ),
                   ),
                 ],
               ),
@@ -263,7 +339,73 @@ class _JobstatusWidgetState extends State<JobstatusWidget> {
       context: context,
       barrierDismissible: false,
       builder: (BuildContext context) {
-        return AlertDialog(
+        return
+
+          AlertDialog(
+            title: Text(title),
+            content: SingleChildScrollView(
+                child: Container(
+                    height: 400.0, // Change as per your requirement
+                    width: 300.0, // Change as per your requirement
+                    child: ListView(children: [
+                      Container(
+                        height: 300.0,
+                        width: 100.0,
+                        margin: const EdgeInsets.all(15.0),
+                        padding: const EdgeInsets.all(3.0),
+                        decoration: BoxDecoration(
+                          border: Border.all(color: Color(0xFFF3AE20)),
+                          borderRadius: new BorderRadius.circular(8),
+                        ),
+                        child: Text(detail),
+                      ),
+                      // TextFormField(
+                      //   // initialValue: number.toString(),
+                      //     onChanged: (value) {
+                      //       setState(() {
+                      //         valueText = int.parse(value);
+                      //       });
+                      //     },
+                      //     controller:
+                      //     TextEditingController(text: number.toString()),
+                      //     keyboardType: TextInputType.number,
+                      //     inputFormatters: <TextInputFormatter>[
+                      //       FilteringTextInputFormatter.digitsOnly
+                      //     ],
+                      //     decoration: InputDecoration(
+                      //         labelText: "number",
+                      //         hintText: "any number",
+                      //         icon: Icon(Icons.calculate))
+                      // ),
+                      Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: <Widget>[
+                            ElevatedButton(
+                                onPressed: () {
+                                  Navigator.pop(context, true);
+                                },
+                                style: ElevatedButton.styleFrom(
+                                    minimumSize: Size(130, 40),
+                                    primary: Color(0xFFBF2F2F),
+                                    padding: EdgeInsets.symmetric(
+                                      horizontal: 30,
+                                      vertical: 8,
+                                    ),
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius:
+                                        new BorderRadius.circular(12))),
+                                child: Text(
+                                  'Close',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 16,
+                                  ),
+                                )),
+                          ]),
+                    ]))),
+          );
+
+          AlertDialog(
           title: Text(title),
           content: SingleChildScrollView(
               child:
@@ -307,6 +449,8 @@ class _JobstatusWidgetState extends State<JobstatusWidget> {
                         ]),
                   ]))),
         );
+
+
       },
     );
   }

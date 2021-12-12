@@ -151,7 +151,7 @@ class _JoblistWidgetState extends State<JoblistWidget> {
                                           child: GestureDetector(
                                             onTap: () async {
                                               bool enterJob =
-                                                  await jobDetail(jobs);
+                                                  await jobDetail('https://picsum.photos/seed/263/600',jobs);
 
                                               if (enterJob) {
                                                 FirebaseFirestore.instance
@@ -277,20 +277,38 @@ class _JoblistWidgetState extends State<JoblistWidget> {
     );
   }
 
-  Future<bool> jobDetail(Map<String, dynamic> jobs) async {
+  Future<bool> jobDetail(String image, Map<String, dynamic> jobs) async {
     // int valueText = number;
     return await showDialog(
       context: context,
       barrierDismissible: false,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text('Job Detail'),
+          title: ListTile(
+            leading: Container(
+              width: 60,
+              height: 60,
+              clipBehavior:
+              Clip.antiAlias,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+              ),
+              child: Image.network(
+                image,
+              ),
+            ),
+            title: Text(jobs['comName']),
+            subtitle: Text(jobs['jobName']),
+            // trailing: Icon(Icons.more_vert),
+          ),
           content: SingleChildScrollView(
               child: Container(
-                  height: 100.0, // Change as per your requirement
+                  height: 400.0, // Change as per your requirement
                   width: 300.0, // Change as per your requirement
                   child: ListView(children: [
                     Container(
+                      height: 300.0,
+                      width: 100.0,
                       margin: const EdgeInsets.all(15.0),
                       padding: const EdgeInsets.all(3.0),
                       decoration: BoxDecoration(

@@ -243,10 +243,16 @@ class _LandingPageWidgetState extends State<LandingPageWidget> {
                                             child:
                                             GestureDetector(
                                               onTap: () async {
+                                                // List<dynamic> lists=[];
+                                                // lists.add(apps); lists.add(jobs[apps['jobID']]); lists.add('https://picsum.photos/seed/263/600');
                                                 await Navigator.pushReplacement(context,
                                                     MaterialPageRoute(
                                                       builder: (context) => JobstatusWidget(
-                                                          app: apps),
+                                                          app: apps,
+                                                          job: jobs[apps['jobID']],
+                                                          image: 'https://picsum.photos/seed/263/600',
+                                                        // list: lists
+                                                      ),
                                                     ),
                                                   );
                                                 },
