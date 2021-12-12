@@ -159,7 +159,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         "interview2Des": "TESTTEST",
                         "jobID": 'Rx27NISLdNSXqVgllxqQ',
                         "notify": false,
-                        "semID": "",
+                        "semDes": "",
                         "seminar": 0,
                         "userID": this.user,
                       })
