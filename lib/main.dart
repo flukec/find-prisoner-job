@@ -17,15 +17,10 @@ import 'package:provider/provider.dart';
 //class SignupWidget
 
 void main() async {
+
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
-    // Replace with actual values
     options: FirebaseOptions(
-        // apiKey: "XXX",
-        // appId: "XXX",
-        // messagingSenderId: "XXX",
-        // projectId: "XXX",
-        //
         apiKey: "AIzaSyBCY4hbqCg1Xs5wc7SlB4etTpr6S2DgyMs",
         authDomain: "anotherchance-df3cc.firebaseapp.com",
         projectId: "anotherchance-df3cc",
@@ -34,21 +29,8 @@ void main() async {
         appId: "1:879570579499:web:7a026df6d5c85bfe0bba6e"),
   );
 
-  var abc = await FirebaseFirestore.instance.collection('jobs').get();
-  print(abc);
-
   runApp(MyApp());
 }
-
-// void main() async {
-//   WidgetsFlutterBinding.ensureInitialized();
-//   await Firebase.initializeApp();
-//   runApp(MyApp());
-// }
-
-// void main() {
-//   runApp(MyApp());
-// }
 
 class MyApp extends StatelessWidget {
   @override
@@ -81,16 +63,8 @@ class _MyHomePageState extends State<MyHomePage> {
       .collection('applicants')
       .where('userID', isEqualTo: 'hjbI9lUI8tV6icyxiAB8')
       .snapshots();
-  //CollectionReference applicants = FirebaseFirestore.instance.collection('applicants');
-  int _counter = 0;
 
-  // final CollectionReference jobCol = FirebaseFirestore.instance
-  //     .collection('jobs')
-  //     .where('userID', isEqualTo: 'hjbI9lUI8tV6icyxiAB8') as CollectionReference<Object?>;
-  //
-  // Stream<QuerySnapshot> get jobStream{
-  //   return jobCol.snapshots();
-  // }
+  int _counter = 0;
 
   Map<String, dynamic> jobs = new Map();
 
@@ -184,23 +158,6 @@ class _MyHomePageState extends State<MyHomePage> {
                       })
                       .then((value) => {print("Added " + value.id)})
                       .catchError((error) => {print("Failed to add: $error")});
-
-                  // firestoreInstance.collection("users").add(
-                  //     {
-                  //       "applicant" : 0,
-                  //       "interview1" : 0,
-                  //       "interview2" : 0,
-                  //       "interview2Des" : 0,
-                  //       "interview2Des" : "TESTTEST",
-                  //       "JobID" : "Rx27NISLdNSXqVgllxqQ",
-                  //       "notify" : false,
-                  //       "semID" : "",
-                  //       "seminar" : 0,
-                  //       "userID" : this.user,
-                  //     }
-                  // ).then((value){
-                  //   print(value.id);
-                  // });
                 }),
             Expanded(
               child: //สำหรับ get ที่เปลี่ยนไปเรื่อยๆ******************************************
@@ -226,6 +183,17 @@ class _MyHomePageState extends State<MyHomePage> {
                               Map<String, dynamic> data =
                                   document.data()! as Map<String, dynamic>;
 
+                              getOneJob(data);
+
+                              Map<String, dynamic> _data1 = new Map();
+                              snapshot.data!.docs
+                                  .map((DocumentSnapshot document) {
+                                Map<String, dynamic> data1 =
+                                    document.data()! as Map<String, dynamic>;
+                                print(data1);
+                              });
+
+                              //GET MANY JOBS
                               // FirebaseFirestore.instance
                               //      .collection('jobs')
                               //      .get()
@@ -234,26 +202,7 @@ class _MyHomePageState extends State<MyHomePage> {
                               //      });
                               // });
 
-                              getOneJob(data);
-
-                              // String jobName='1';
-                              Map<String, dynamic> _data1 = new Map();
-                              snapshot.data!.docs
-                                  .map((DocumentSnapshot document) {
-                                Map<String, dynamic> data1 =
-                                    document.data()! as Map<String, dynamic>;
-                                print(data1);
-                                // setState(() async {
-                                //   jobName=data1['jabName'];
-                                //   print(jobName);
-                                // });
-                              });
-                              // print(jobName);
-
-                              // Map<String, dynamic> jobs = document.data()! as Map<String, dynamic>;
-
-                              // Map<String, dynamic> data2;
-                              // String name="";
+                              //GET ONE JOB
                               // FirebaseFirestore.instance
                               //     .collection('jobs').doc(data['jobID'])
                               //     .get()
@@ -263,8 +212,6 @@ class _MyHomePageState extends State<MyHomePage> {
                               //         print(data2);
                               //     }
                               // );
-
-                              // print(data['jobID']);
 
                               return Container(
                                   height:
@@ -329,54 +276,6 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
-  // Function<void> _getJobs(String a) {
-  //   // List<dynamic> joblist=[];
-  //   Map<String, dynamic> joblist2=new Map();
-  //   FirebaseFirestore.instance
-  //       .collection('jobs')
-  //       .get()
-  //       .then((QuerySnapshot querySnapshot){
-  //         querySnapshot.docs.forEach((doc){
-  //           joblist2[doc.id] = doc.data();
-  //         // print(doc.data());
-  //       });
-  //       print("test1");
-  //       print(joblist2);
-  //       return joblist2;
-  //   });
-  //   print("test2");
-  //   print(joblist2);
-  //   return joblist2;
-  // }
-
-  Future<void> _getJobs() async {
-    // String uid = FirebaseAuth.instance.currentUser.uid;
-    Map<String, dynamic> joblist2 = new Map();
-    await FirebaseFirestore.instance
-        .collection('jobs')
-        .get()
-        .then((QuerySnapshot querySnapshot) {
-      querySnapshot.docs.forEach((doc) {
-        if (doc.exists) {
-          // this will check availability of document
-          joblist2[doc.id] = doc.data();
-        } else {}
-      });
-      print("test1");
-      print(joblist2);
-      jobs = joblist2;
-      // return joblist2;
-    });
-    // if(doc.exists) { // this will check availability of document
-    //   branch = doc.data()['Branch'];
-    //   semester = doc.data()['Semester'];
-    // }else{
-    //   branch = "User is not available";
-    //   semester = "User is not available";
-    // }
-    setState(() {});
-  }
-
   Future<int> _getNumber(int number) async {
     int valueText = number;
     return await showDialog(
@@ -429,65 +328,6 @@ class _MyHomePageState extends State<MyHomePage> {
                           ),
                         )),
                   ]))),
-        );
-      },
-    );
-  }
-}
-
-class UserInformation extends StatefulWidget {
-  @override
-  _UserInformationState createState() => _UserInformationState();
-}
-
-class _UserInformationState extends State<UserInformation> {
-  final Stream<QuerySnapshot> _appStream =
-      FirebaseFirestore.instance.collection('applicants').snapshots();
-  final Stream<QuerySnapshot> _jobStream =
-      FirebaseFirestore.instance.collection('jobs').snapshots();
-
-  @override
-  Widget build(BuildContext context) {
-    return StreamBuilder<QuerySnapshot>(
-      stream: _appStream,
-      builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot1) {
-        if (snapshot1.connectionState == ConnectionState.waiting) {
-          return Text("Loading");
-        }
-
-        return StreamBuilder<QuerySnapshot>(
-          stream: _jobStream,
-          builder:
-              (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot2) {
-            Map<String, dynamic> data1;
-            if (snapshot1.connectionState == ConnectionState.waiting) {
-              return Text("Loading");
-            }
-
-            Map<String, dynamic> data2;
-
-            snapshot1.data!.docs.map((DocumentSnapshot document) {
-              data1 = document.data()! as Map<String, dynamic>;
-            });
-            snapshot2.data!.docs.map((DocumentSnapshot document) {
-              data2 = document.data()! as Map<String, dynamic>;
-            });
-
-            return ListView(
-              children: snapshot1.data!.docs.map((DocumentSnapshot document) {
-                Map<String, dynamic> data =
-                    document.data()! as Map<String, dynamic>;
-                snapshot2.data!.docs.map((DocumentSnapshot document) {
-                  Map<String, dynamic> data2 =
-                      document.data()! as Map<String, dynamic>;
-                });
-                return ListTile(
-                  title: Text(data['full_name']),
-                  subtitle: Text(data['company']),
-                );
-              }).toList(),
-            );
-          },
         );
       },
     );
