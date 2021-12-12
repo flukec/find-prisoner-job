@@ -1,6 +1,7 @@
 import 'checkapplicantlistadmin.dart';
 import 'companyinterviewlist.dart';
 import 'joblistadmin.dart';
+import 'profile.dart';
 import 'physologicalinterviewlist.dart';
 import 'seminarlist.dart';
 import 'package:flutter/material.dart';
@@ -45,6 +46,31 @@ class _LandingpageadminWidgetState extends State<LandingpageadminWidget> {
                       ),
                     ),
                   ),
+                    Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(100, 0, 0, 0),
+                    child: InkWell(
+                      onTap: () async {
+                        await Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => ProfileWidget(),
+                          ),
+                        );
+                      },
+                      child: Container(
+                        width: 50,
+                        height: 50,
+                        clipBehavior: Clip.antiAlias,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                        ),
+                        child: Image.asset(
+                          'assets/images/blank-profile-picture-973460_1280.png',
+                        ),
+                      ),
+                    ),
+                  ),
+                  
                   Padding(
                     padding: EdgeInsetsDirectional.fromSTEB(30, 20, 190, 0),
                     child: ElevatedButton(
@@ -77,11 +103,11 @@ class _LandingpageadminWidgetState extends State<LandingpageadminWidget> {
                     ),
                   ),      
                     ),
-                  )
+                  ),                     
                 ],
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0, 50, 0, 0),
+                padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
                   children: [
