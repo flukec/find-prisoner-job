@@ -1,5 +1,7 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:final_app/model/profile.dart';
 import 'package:final_app/screen/welcome.dart';
+import 'package:final_app/screen/welcomeAdmin.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -144,8 +146,17 @@ class _LoginWidgetState extends State<LoginWidget> {
   // Profile profile = Profile(password: '', email: '');
   final Future<FirebaseApp> firebase = Firebase.initializeApp();
 
+  // final auth = FirebaseAuth.instance;
+
+  // Future<String> getCurrentUID() async {
+  //   print((auth.currentUser)!.uid);
+  //   return (auth.currentUser)!.uid;
+  // }
+
   @override
   void initState() {
+    // print((auth.currentUser)!.uid);
+
     super.initState();
     emailAddressController = TextEditingController();
     passwordController = TextEditingController();
@@ -398,13 +409,36 @@ class _LoginWidgetState extends State<LoginWidget> {
                                                   .signInWithEmailAndPassword(
                                                   email: this.email.email,
                                                   password: this.email.password)
-                                                  .then((value) {
+                                                  .then((value) async {
                                                 formKey.currentState!.reset();
-                                                Navigator.pushReplacement(context,
-                                                    MaterialPageRoute(builder: (context) {
-                                                      return Welcome();
-                                                    }));
+
+                                                // value.user!.uid;
+
+                                                await FirebaseFirestore.instance
+                                                    .collection('users')
+                                                    .doc(value.user!.uid)
+                                                    .get()
+                                                    .then((DocumentSnapshot document) {
+                                                      Map<String, dynamic> user=document.data()! as Map<String, dynamic>;
+
+                                                      if(user['isAdmin']){
+                                                        Navigator.pushReplacement(context,
+                                                            MaterialPageRoute(builder: (context) {
+                                                              return WelcomeAdmin();
+                                                            }));
+                                                      }else{
+                                                        Navigator.pushReplacement(context,
+                                                            MaterialPageRoute(builder: (context) {
+                                                              return Welcome();
+                                                            }));
+                                                      }
+
+                                                  // print('test1 ${oneJob}');
+                                                });
+
+
                                               });
+
                                             } on FirebaseAuthException catch (e) {
                                               Fluttertoast.showToast(
                                                   msg: e.message!,

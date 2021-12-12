@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -33,8 +34,12 @@ class _SignupWidgetState extends State<SignupWidget> {
   Email email = Email(password: '', email: '');
   final Future<FirebaseApp> firebase = Firebase.initializeApp();
 
+  // final auth = FirebaseAuth.instance;
+
   @override
   void initState() {
+    // print((auth.currentUser)!.uid);
+
     super.initState();
     emailAddressController = TextEditingController();
     passwordController = TextEditingController();
@@ -249,6 +254,27 @@ class _SignupWidgetState extends State<SignupWidget> {
                                                 email: this.email.email,
                                                 password: this.email.password)
                                                 .then((value) {
+
+                                                  print("CHECK Uuid START");
+                                                  print("TEST1 ${value.user}");
+
+                                                  FirebaseFirestore.instance.collection('users')
+                                                      .doc(value.user!.uid) // <-- Document ID
+                                                      .set({
+                                                    "citizenID": "",
+                                                    "email": value.user!.email,
+                                                    "isAdmin": false,
+                                                    "name": "",
+                                                    "surname": "",
+                                                  }) // <-- Your data
+                                                      .then((_) => print('Create User'))
+                                                      .catchError((error) => print('Create failed: $error'));
+
+                                                  print("TEST2 ${value.user!.uid}");
+                                                  print("CHECK Uuid END");
+                                              // final auth = FirebaseAuth.instance;
+                                              // print((auth.currentUser)!.uid);
+
                                               formKey.currentState!.reset();
                                               Fluttertoast.showToast(
                                                   msg: "Account created",

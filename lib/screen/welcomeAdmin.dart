@@ -5,9 +5,9 @@ import 'package:flutter/material.dart';
 import 'home.dart';
 import 'login.dart';
 
-class Welcome extends StatelessWidget {
+class WelcomeAdmin extends StatelessWidget {
 
-  Welcome({Key? key}) : super(key: key);
+  WelcomeAdmin({Key? key}) : super(key: key);
 
   final auth = FirebaseAuth.instance;
 
@@ -19,7 +19,7 @@ class Welcome extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Welcome User"),
+        title: Text("Welcome Admin"),
       ),
       body: Padding(
         padding: const EdgeInsets.all(10.0),
