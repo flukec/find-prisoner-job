@@ -3,6 +3,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
 import 'home.dart';
+import 'login.dart';
 
 class Welcome extends StatelessWidget {
 
@@ -35,7 +36,7 @@ class Welcome extends StatelessWidget {
                   auth.signOut().then((value) {
                     Navigator.pushReplacement(context,
                         MaterialPageRoute(builder: (context) {
-                      return Home();
+                      return LoginWidget();
                     }));
                   });
                 },
