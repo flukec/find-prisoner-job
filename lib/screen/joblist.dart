@@ -112,10 +112,9 @@ class _JoblistWidgetState extends State<JoblistWidget> {
             /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
             Expanded(
               child: //สำหรับ get ที่เปลี่ยนไปเรื่อยๆ******************************************
-              StreamBuilder<QuerySnapshot>(
-                stream: FirebaseFirestore.instance
-                    .collection('jobs')
-                    .snapshots(),
+                  StreamBuilder<QuerySnapshot>(
+                stream:
+                    FirebaseFirestore.instance.collection('jobs').snapshots(),
                 builder: (BuildContext context,
                     AsyncSnapshot<QuerySnapshot> snapshot) {
                   if (snapshot.hasError) {
@@ -134,44 +133,57 @@ class _JoblistWidgetState extends State<JoblistWidget> {
                                 .map((DocumentSnapshot document) {
                               var docID = document.id;
                               Map<String, dynamic> jobs =
-                              document.data()! as Map<String, dynamic>;
+                                  document.data()! as Map<String, dynamic>;
 
                               return Container(
                                   height:
-                                  90.0, // Change as per your requirement
+                                      90.0, // Change as per your requirement
                                   width:
-                                  350.0, // Change as per your requirement
+                                      350.0, // Change as per your requirement
                                   child: ListView(
                                       scrollDirection: Axis.horizontal,
                                       children: <Widget>[
-
                                         //////////////////////////////////////INNER
                                         Padding(
-                                          padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0, 10, 0, 0),
                                           child: GestureDetector(
                                             onTap: () async {
-                                              bool enterJob=await jobDetail(jobs);
+                                              bool enterJob =
+                                                  await jobDetail(jobs);
 
-                                              if(enterJob){
+                                              if (enterJob) {
                                                 FirebaseFirestore.instance
                                                     .collection('applicants')
                                                     .add({
-                                                  "applicant": 0,
-                                                  "interview1": 0,
-                                                  "interview2": 0,
-                                                  "interview2Des": 0,
-                                                  "interview2Des": "No detail.",
-                                                  "jobID": docID,
-                                                  "notify": false,
-                                                  "semDes": "No detail.",
-                                                  "seminar": 0,
-                                                  "userID": (auth.currentUser)!.uid,
-                                                })
-                                                    .then((value) => {print("Added " + value.id)})
-                                                    .catchError((error) => {print("Failed to add: $error")});
-                                                await Navigator.pushReplacement(context,
+                                                      "applicant": 0,
+                                                      "interview1": 0,
+                                                      "interview2": 0,
+                                                      "interview2Des": 0,
+                                                      "interview2Des":
+                                                          "No detail.",
+                                                      "jobID": docID,
+                                                      "notify": false,
+                                                      "semDes": "No detail.",
+                                                      "seminar": 0,
+                                                      "userID":
+                                                          (auth.currentUser)!
+                                                              .uid,
+                                                    })
+                                                    .then((value) => {
+                                                          print("Added " +
+                                                              value.id)
+                                                        })
+                                                    .catchError((error) => {
+                                                          print(
+                                                              "Failed to add: $error")
+                                                        });
+                                                await Navigator.pushReplacement(
+                                                  context,
                                                   MaterialPageRoute(
-                                                    builder: (context) => LandingPageWidget(),
+                                                    builder: (context) =>
+                                                        LandingPageWidget(),
                                                   ),
                                                 );
                                               }
@@ -186,7 +198,8 @@ class _JoblistWidgetState extends State<JoblistWidget> {
                                                     color: Colors.transparent,
                                                   )
                                                 ],
-                                                borderRadius: BorderRadius.circular(50),
+                                                borderRadius:
+                                                    BorderRadius.circular(50),
                                                 border: Border.all(
                                                   color: Colors.transparent,
                                                 ),
@@ -195,11 +208,15 @@ class _JoblistWidgetState extends State<JoblistWidget> {
                                                 mainAxisSize: MainAxisSize.max,
                                                 children: [
                                                   Padding(
-                                                    padding: EdgeInsetsDirectional.fromSTEB(30, 0, 0, 0),
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(
+                                                                30, 0, 0, 0),
                                                     child: Container(
                                                       width: 60,
                                                       height: 60,
-                                                      clipBehavior: Clip.antiAlias,
+                                                      clipBehavior:
+                                                          Clip.antiAlias,
                                                       decoration: BoxDecoration(
                                                         shape: BoxShape.circle,
                                                       ),
@@ -209,21 +226,29 @@ class _JoblistWidgetState extends State<JoblistWidget> {
                                                     ),
                                                   ),
                                                   Padding(
-                                                    padding: EdgeInsetsDirectional.fromSTEB(30, 0, 0, 0),
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(
+                                                                30, 0, 0, 0),
                                                     child: Column(
-                                                      mainAxisSize: MainAxisSize.max,
+                                                      mainAxisSize:
+                                                          MainAxisSize.max,
                                                       children: [
                                                         Padding(
                                                           padding:
-                                                          EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
+                                                              EdgeInsetsDirectional
+                                                                  .fromSTEB(0,
+                                                                      20, 0, 0),
                                                           child: Text(
                                                             '${jobs['comName']}',
-                                                            style: TextStyle(fontSize: 14),
+                                                            style: TextStyle(
+                                                                fontSize: 14),
                                                           ),
                                                         ),
                                                         Text(
                                                           'job: ${jobs['jobName']}',
-                                                          style: TextStyle(fontSize: 14),
+                                                          style: TextStyle(
+                                                              fontSize: 14),
                                                         ),
                                                         // Text(
                                                         //   'status: ${appStage(data)}',
@@ -239,7 +264,6 @@ class _JoblistWidgetState extends State<JoblistWidget> {
                                         ),
 
                                         //////////////////////////////////////INNER
-
                                       ]));
                             }).toList(),
                           )));
@@ -262,8 +286,7 @@ class _JoblistWidgetState extends State<JoblistWidget> {
         return AlertDialog(
           title: Text('Job Detail'),
           content: SingleChildScrollView(
-              child:
-              Container(
+              child: Container(
                   height: 100.0, // Change as per your requirement
                   width: 300.0, // Change as per your requirement
                   child: ListView(children: [
@@ -309,15 +332,15 @@ class _JoblistWidgetState extends State<JoblistWidget> {
                                     vertical: 8,
                                   ),
                                   shape: RoundedRectangleBorder(
-                                      borderRadius: new BorderRadius.circular(12))),
+                                      borderRadius:
+                                          new BorderRadius.circular(12))),
                               child: Text(
                                 'Cancel',
                                 style: TextStyle(
                                   color: Colors.white,
                                   fontSize: 16,
                                 ),
-                              )
-                          ),
+                              )),
                           ElevatedButton(
                               onPressed: () {
                                 Navigator.pop(context, true);
@@ -330,20 +353,19 @@ class _JoblistWidgetState extends State<JoblistWidget> {
                                     vertical: 8,
                                   ),
                                   shape: RoundedRectangleBorder(
-                                      borderRadius: new BorderRadius.circular(12))),
+                                      borderRadius:
+                                          new BorderRadius.circular(12))),
                               child: Text(
                                 'Choose',
                                 style: TextStyle(
                                   color: Colors.white,
                                   fontSize: 16,
                                 ),
-                              )
-                          ),
+                              )),
                         ]),
                   ]))),
         );
       },
     );
   }
-
 }
