@@ -271,7 +271,8 @@ class _JoblistWidgetState extends State<JoblistWidget> {
                       margin: const EdgeInsets.all(15.0),
                       padding: const EdgeInsets.all(3.0),
                       decoration: BoxDecoration(
-                          border: Border.all(color: Colors.blueAccent)
+                          border: Border.all(color: Color.Color(0xFFF3AE20))
+                          borderRadius: new BorderRadius.circular(8)
                       ),
                       child: Text(jobs['jobDes']),
                     ),
@@ -301,20 +302,19 @@ class _JoblistWidgetState extends State<JoblistWidget> {
                           Navigator.pop(context, false);
                         },
                         style: ElevatedButton.styleFrom(
-                            minimumSize: Size(103, 30),
-                            primary: Colors.grey,
+                            minimumSize: Size(130, 40),
+                            primary: Color(0xFFBF2F2F),
                             padding: EdgeInsets.symmetric(
                               horizontal: 30,
                               vertical: 8,
                             ),
                             shape: RoundedRectangleBorder(
-                                borderRadius: new BorderRadius.circular(5.0))),
+                                borderRadius: new BorderRadius.circular(12))),
                         child: Text(
                           'Cancel',
                           style: TextStyle(
                             color: Colors.white,
-                            fontSize: 14,
-                            fontWeight: FontWeight.bold,
+                            fontSize: 16,                           
                           ),
                         )
                     ),
@@ -323,20 +323,19 @@ class _JoblistWidgetState extends State<JoblistWidget> {
                           Navigator.pop(context, true);
                         },
                         style: ElevatedButton.styleFrom(
-                            minimumSize: Size(103, 30),
-                            primary: Colors.red,
+                            minimumSize: Size(130, 40),
+                            primary: Color(0xFF6DBA45),
                             padding: EdgeInsets.symmetric(
                               horizontal: 30,
                               vertical: 8,
                             ),
                             shape: RoundedRectangleBorder(
-                                borderRadius: new BorderRadius.circular(5.0))),
+                                borderRadius: new BorderRadius.circular(12)),
                         child: Text(
                           'Choose',
                           style: TextStyle(
                             color: Colors.white,
-                            fontSize: 14,
-                            fontWeight: FontWeight.bold,
+                            fontSize: 16,
                           ),
                         )
                     ),
