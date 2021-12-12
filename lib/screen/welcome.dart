@@ -3,6 +3,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
 import 'home.dart';
+import 'landingpage.dart';
 import 'login.dart';
 
 class Welcome extends StatelessWidget {
@@ -39,6 +40,16 @@ class Welcome extends StatelessWidget {
                       return LoginWidget();
                     }));
                   });
+                },
+              )
+              ,
+              ElevatedButton(
+                child: Text("Landing"),
+                onPressed: () {
+                    Navigator.pushReplacement(context,
+                        MaterialPageRoute(builder: (context) {
+                          return LandingPageWidget();
+                        }));
                 },
               )
             ],

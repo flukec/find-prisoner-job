@@ -160,10 +160,10 @@ class _JoblistWidgetState extends State<JoblistWidget> {
                                                   "interview1": 0,
                                                   "interview2": 0,
                                                   "interview2Des": 0,
-                                                  "interview2Des": "",
+                                                  "interview2Des": "No detail.",
                                                   "jobID": docID,
                                                   "notify": false,
-                                                  "semDes": "",
+                                                  "semDes": "No detail.",
                                                   "seminar": 0,
                                                   "userID": (auth.currentUser)!.uid,
                                                 })

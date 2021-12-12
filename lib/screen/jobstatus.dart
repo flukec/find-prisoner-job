@@ -3,19 +3,19 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class JobstatusWidget extends StatefulWidget {
-  const JobstatusWidget({  Key? key, required Map<String, dynamic> this.data}) : super(key: key);
-  final Map<String, dynamic> data;
+  const JobstatusWidget({  Key? key, required Map<String, dynamic> this.app}) : super(key: key);
+  final Map<String, dynamic> app;
 
   @override
-  _JobstatusWidgetState createState() => _JobstatusWidgetState(data);
+  _JobstatusWidgetState createState() => _JobstatusWidgetState(app);
 }
 
 class _JobstatusWidgetState extends State<JobstatusWidget> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
-  Map<String, dynamic> data;
+  Map<String, dynamic> app;
 
-  _JobstatusWidgetState(this.data);
+  _JobstatusWidgetState(this.app);
 
   String stageStatus (int status) {
     if(status==0){
@@ -89,7 +89,7 @@ class _JobstatusWidgetState extends State<JobstatusWidget> {
                       Padding(
                         padding: EdgeInsetsDirectional.fromSTEB(0, 0, 70, 0),
                         child: Text(
-                          'Status: ${stageStatus(data['applicant'])}',
+                          'Status: ${stageStatus(app['applicant'])}',
                           textAlign: TextAlign.start,
                           style: TextStyle(fontSize: 20.0),
                         ),
@@ -122,32 +122,36 @@ class _JobstatusWidgetState extends State<JobstatusWidget> {
                         style: TextStyle(fontSize: 20.0),
                       ),
                       Text(
-                        'Status: ${stageStatus(data['seminar'])}',
+                        'Status: ${stageStatus(app['seminar'])}',
                         style: TextStyle(fontSize: 20.0),
                       ),
                     ],
                   ),
-                  ElevatedButton(
-                      onPressed: () {
-                        Navigator.pop(context, false);
-                      },
-                      style: ElevatedButton.styleFrom(
-                          minimumSize: Size(103, 30),
-                          primary: Colors.grey,
-                          padding: EdgeInsets.symmetric(
-                            horizontal: 30,
-                            vertical: 8,
+                  Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(100, 0, 0, 0),
+                    child: ElevatedButton(
+                        onPressed: (app['applicant']!=1)? null : () {
+                          appDetail("Seminar Detail",app['semDes'],);
+                          // Navigator.pop(context, false);
+                        },
+                        style: ElevatedButton.styleFrom(
+                            minimumSize: Size(30, 30),
+                            primary: Colors.grey,
+                            padding: EdgeInsets.symmetric(
+                              horizontal: 5,
+                              vertical: 8,
+                            ),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: new BorderRadius.circular(5.0))),
+                        child: Text(
+                          'Detail',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 14,
+                            fontWeight: FontWeight.bold,
                           ),
-                          shape: RoundedRectangleBorder(
-                              borderRadius: new BorderRadius.circular(5.0))),
-                      child: Text(
-                        'Cancel',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 14,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      )
+                        )
+                    ),
                   ),
                 ],
               ),
@@ -177,7 +181,7 @@ class _JobstatusWidgetState extends State<JobstatusWidget> {
                       Padding(
                         padding: EdgeInsetsDirectional.fromSTEB(0, 0, 150, 0),
                         child: Text(
-                          'Status: ${stageStatus(data['interview1'])}',
+                          'Status: ${stageStatus(app['interview1'])}',
                           style: TextStyle(fontSize: 20.0),
                         ),
                       ),
@@ -209,14 +213,41 @@ class _JobstatusWidgetState extends State<JobstatusWidget> {
                         style: TextStyle(fontSize: 20.0),
                       ),
                       Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(0, 0, 120, 0),
+                        padding: EdgeInsetsDirectional.fromSTEB(0, 0, 100, 0),
                         child: Text(
-                          'Status: ${stageStatus(data['interview2'])}',
+                          'Status: ${stageStatus(app['interview2'])}',
                           style: TextStyle(fontSize: 20.0),
                         ),
                       ),
                     ],
                   ),
+                  // Padding(
+                  //   padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
+                  //   child:
+                    ElevatedButton(
+                        onPressed: (app['interview1']!=1)? null : () {
+                          appDetail("Company Interview Detail",app['interview2Des'],);
+                          // Navigator.pop(context, false);
+                        },
+                        style: ElevatedButton.styleFrom(
+                            minimumSize: Size(30, 30),
+                            primary: Colors.grey,
+                            padding: EdgeInsets.symmetric(
+                              horizontal: 5,
+                              vertical: 8,
+                            ),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: new BorderRadius.circular(5.0))),
+                        child: Text(
+                          'Detail',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 14,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        )
+                    ),
+                  // ),
                 ],
               ),
             ),
@@ -226,14 +257,14 @@ class _JobstatusWidgetState extends State<JobstatusWidget> {
     );
   }
 
-  Future<bool> appDetail(Map<String, dynamic> jobs) async {
+  Future<bool> appDetail(String title, String detail) async {
     // int valueText = number;
     return await showDialog(
       context: context,
       barrierDismissible: false,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text('Job Detail'),
+          title: Text(title),
           content: SingleChildScrollView(
               child:
               Container(
@@ -246,32 +277,14 @@ class _JobstatusWidgetState extends State<JobstatusWidget> {
                       decoration: BoxDecoration(
                           border: Border.all(color: Colors.blueAccent)
                       ),
-                      child: Text(jobs['jobDes']),
+                      child: Text(detail),
                     ),
-                    // TextFormField(
-                    //   // initialValue: number.toString(),
-                    //     onChanged: (value) {
-                    //       setState(() {
-                    //         valueText = int.parse(value);
-                    //       });
-                    //     },
-                    //     controller:
-                    //     TextEditingController(text: number.toString()),
-                    //     keyboardType: TextInputType.number,
-                    //     inputFormatters: <TextInputFormatter>[
-                    //       FilteringTextInputFormatter.digitsOnly
-                    //     ],
-                    //     decoration: InputDecoration(
-                    //         labelText: "number",
-                    //         hintText: "any number",
-                    //         icon: Icon(Icons.calculate))
-                    // ),
                     Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: <Widget>[
                           ElevatedButton(
                               onPressed: () {
-                                Navigator.pop(context, false);
+                                Navigator.pop(context, true);
                               },
                               style: ElevatedButton.styleFrom(
                                   minimumSize: Size(103, 30),
@@ -283,29 +296,7 @@ class _JobstatusWidgetState extends State<JobstatusWidget> {
                                   shape: RoundedRectangleBorder(
                                       borderRadius: new BorderRadius.circular(5.0))),
                               child: Text(
-                                'Cancel',
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              )
-                          ),
-                          ElevatedButton(
-                              onPressed: () {
-                                Navigator.pop(context, true);
-                              },
-                              style: ElevatedButton.styleFrom(
-                                  minimumSize: Size(103, 30),
-                                  primary: Colors.red,
-                                  padding: EdgeInsets.symmetric(
-                                    horizontal: 30,
-                                    vertical: 8,
-                                  ),
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius: new BorderRadius.circular(5.0))),
-                              child: Text(
-                                'Choose',
+                                'Close',
                                 style: TextStyle(
                                   color: Colors.white,
                                   fontSize: 14,

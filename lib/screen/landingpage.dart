@@ -246,7 +246,7 @@ class _LandingPageWidgetState extends State<LandingPageWidget> {
                                                 await Navigator.pushReplacement(context,
                                                     MaterialPageRoute(
                                                       builder: (context) => JobstatusWidget(
-                                                        data: apps),
+                                                          app: apps),
                                                     ),
                                                   );
                                                 },
