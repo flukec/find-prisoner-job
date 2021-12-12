@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 
-// import 'package:final_app/model/profile.dart';
+import 'package:final_app/model/email.dart';
 // import 'home.dart';
 
 import 'login.dart';
@@ -26,11 +26,11 @@ class _SignupWidgetState extends State<SignupWidget> {
   bool loadingButton2 = false;
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
-  String emailValue='';
-  String passwordValue='';
+  // String emailValue='';
+  // String passwordValue='';
 
   final formKey = GlobalKey<FormState>();
-  // Profile profile = Profile(password: '', email: '');
+  Email email = Email(password: '', email: '');
   final Future<FirebaseApp> firebase = Firebase.initializeApp();
 
   @override
@@ -120,7 +120,7 @@ class _SignupWidgetState extends State<SignupWidget> {
                                     ]),
                                     keyboardType: TextInputType.emailAddress,
                                     onSaved: (String? email) {
-                                      emailValue = email!;
+                                      this.email.email = email!;
                                     },
                                     controller: emailAddressController,
                                     obscureText: false,
@@ -174,7 +174,7 @@ class _SignupWidgetState extends State<SignupWidget> {
                                     RequiredValidator(errorText: "Enter password"),
                                     // obscureText: true,
                                     onSaved: (String? password) {
-                                      passwordValue = password!;
+                                      this.email.password = password!;
                                     },
                                     controller: passwordController,
                                     obscureText: !passwordVisibility,
@@ -246,8 +246,8 @@ class _SignupWidgetState extends State<SignupWidget> {
                                           try {
                                             await FirebaseAuth.instance
                                                 .createUserWithEmailAndPassword(
-                                                email: emailValue,
-                                                password: passwordValue)
+                                                email: this.email.email,
+                                                password: this.email.password)
                                                 .then((value) {
                                               formKey.currentState!.reset();
                                               Fluttertoast.showToast(

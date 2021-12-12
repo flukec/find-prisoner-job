@@ -5,7 +5,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:form_field_validator/form_field_validator.dart';
-
+import 'package:final_app/model/email.dart';
 import 'signup.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -137,8 +137,9 @@ class _LoginWidgetState extends State<LoginWidget> {
   bool loadingButton1 = false;
   bool loadingButton2 = false;
   final scaffoldKey = GlobalKey<ScaffoldState>();
-  String emailValue='';
-  String passwordValue='';
+  Email email = Email(password: '', email: '');
+  // String emailValue='';
+  // String passwordValue='';
   final formKey = GlobalKey<FormState>();
   // Profile profile = Profile(password: '', email: '');
   final Future<FirebaseApp> firebase = Firebase.initializeApp();
@@ -234,7 +235,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                                         ]),
                                         keyboardType: TextInputType.emailAddress,
                                         onSaved: (String? email) {
-                                          emailValue = email!;
+                                          this.email.email = email!;
                                         },
                                         // onChanged: (value) {
                                         //   setState(() {
@@ -297,7 +298,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                                         validator: RequiredValidator(errorText: "Enter password"),
                                         // obscureText: true,
                                         onSaved: (String? password) {
-                                          passwordValue = password!;
+                                          this.email.password = password!;
                                         },
                                         // onChanged: (value) {
                                         //   setState(() {
@@ -395,8 +396,8 @@ class _LoginWidgetState extends State<LoginWidget> {
                                             try {
                                               await FirebaseAuth.instance
                                                   .signInWithEmailAndPassword(
-                                                  email: emailValue,
-                                                  password: passwordValue)
+                                                  email: this.email.email,
+                                                  password: this.email.password)
                                                   .then((value) {
                                                 formKey.currentState!.reset();
                                                 Navigator.pushReplacement(context,
