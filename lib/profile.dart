@@ -282,7 +282,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
             Align(
               alignment: AlignmentDirectional(0, 0.05),
               child: Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0, 24, 0, 0),
+                padding: EdgeInsetsDirectional.fromSTEB(0, 100, 0, 0),
                 child: ElevatedButton(
                   onPressed: () async {
                     await Navigator.push(
