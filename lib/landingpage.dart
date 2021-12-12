@@ -51,7 +51,7 @@ class _LandingPageWidgetState extends State<LandingPageWidget> {
                           shape: BoxShape.circle,
                         ),
                         child: Image.asset(
-                          'assets/images/blank-profile-picture-973460_1280.png',
+                          'assets/blank-profile-picture-973460_1280.png',
                         ),
                       ),
                     ),
