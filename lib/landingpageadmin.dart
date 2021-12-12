@@ -70,7 +70,9 @@ class _LandingpageadminWidgetState extends State<LandingpageadminWidget> {
                       ),
                     ),
                   ),
-                  
+                   Column(
+                mainAxisSize: MainAxisSize.max,
+                children: [
                   Padding(
                     padding: EdgeInsetsDirectional.fromSTEB(30, 20, 190, 0),
                     child: ElevatedButton(
@@ -103,10 +105,8 @@ class _LandingpageadminWidgetState extends State<LandingpageadminWidget> {
                     ),
                   ),      
                     ),
-                  ),                     
-                ],
-              ),
-              Padding(
+                  ),         
+                Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
@@ -145,6 +145,11 @@ class _LandingpageadminWidgetState extends State<LandingpageadminWidget> {
                   ],
                 ),
               ),
+                ],
+              ),
+                              
+                ],
+              ),          
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
                 child: ElevatedButton(
