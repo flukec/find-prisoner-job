@@ -156,7 +156,6 @@ class _MyHomePageState extends State<MyHomePage> {
                         "interview1": 0,
                         "interview2": 0,
                         "interview2Des": 0,
-                        "interview2Des": "TESTTEST",
                         "jobID": 'Rx27NISLdNSXqVgllxqQ',
                         "notify": false,
                         "semDes": "",

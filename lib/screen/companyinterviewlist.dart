@@ -69,7 +69,7 @@ class _CompanyInterviewlistWidgetState
               StreamBuilder<QuerySnapshot> (
                 stream: FirebaseFirestore.instance
                     .collection('applicants')
-                    .where('stage', isEqualTo: 1)
+                    .where('stage', isEqualTo: 4)
                     .snapshots(),
                 builder: (BuildContext context,
                     AsyncSnapshot<QuerySnapshot> snapshot1) {

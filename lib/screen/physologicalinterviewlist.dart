@@ -69,7 +69,7 @@ class _PhysologicalInterviewlistWidgetState
               StreamBuilder<QuerySnapshot> (
                 stream: FirebaseFirestore.instance
                     .collection('applicants')
-                    .where('stage', isEqualTo: 1)
+                    .where('stage', isEqualTo: 3)
                     .snapshots(),
                 builder: (BuildContext context,
                     AsyncSnapshot<QuerySnapshot> snapshot1) {
