@@ -366,7 +366,11 @@ class _LandingPageWidgetState extends State<LandingPageWidget> {
 
                                       }).toList(),
                                     )),
-
+////////////////////////////////////////////////////
+                                Visibility(
+                                    visible: alert,
+                                    child: Text("Your profile is empty"),
+                                ),
                                 Column(
                                   mainAxisSize: MainAxisSize.max,
                                   children: [
@@ -382,23 +386,39 @@ class _LandingPageWidgetState extends State<LandingPageWidget> {
                                             size: 30,
                                           ),
                                           onPressed: () async {
-                                            // print((auth.currentUser)!.uid);
-                                            ////***********************************************************************************************************************
+                                            // alert=false;
+                                            await FirebaseFirestore.instance
+                                                .collection('users')
+                                                .doc((auth.currentUser)!.uid)
+                                                .get()
+                                                .then((DocumentSnapshot document) {
+                                              setState(() {
+                                                oneJob = document.data()! as Map<String, dynamic>;
+                                              });
+                                              if(!oneJob['saveProfile']){
+                                                alert=true;
+                                              }
+                                            });
+
+                                            if(!oneJob['saveProfile']){
+                                              // alert=true;
+                                            }else{
                                             (isPending)? null:
-                                            await Navigator.pushReplacement(
+                                              await Navigator.pushReplacement(
                                               context,
                                               MaterialPageRoute(
-                                                // builder: (context) => ApplicantWidget(),
-                                                builder: (context) => JoblistWidget(),
+                                              // builder: (context) => ApplicantWidget(),
+                                              builder: (context) => JoblistWidget(),
                                               ),
                                             );
 
-                                          },
+                                            }
+                                          }
+                                          )
                                         ),
                                       ),
+                                      ]
                                     )
-                                  ],
-                                ),
 
                               ],
                             )
@@ -548,5 +568,28 @@ class _LandingPageWidgetState extends State<LandingPageWidget> {
       ),
     );
   }
+
+  bool alert=false;
+
+  Map<String, dynamic> oneJob = new Map();
+  Future<void> getOneJob(data) async {
+    // await Firebase.initializeApp().then((value) async {
+    Map<String, dynamic> data2;
+    await FirebaseFirestore.instance
+        .collection('users')
+        .doc((auth.currentUser)!.uid)
+        .get()
+        .then((DocumentSnapshot document) {
+      // oneJob=document.data()! as Map<String, dynamic>;
+      setState(() {
+        oneJob = document.data()! as Map<String, dynamic>;
+      });
+      // print('test1 ${oneJob}');
+    });
+    // print('test2 ${oneJob}');
+    // });
+    // print('test3 ${oneJob}');
+  }
+
 }
 

@@ -166,6 +166,7 @@ class _JoblistWidgetState extends State<JoblistWidget> {
                                                       "notify": false,
                                                       "semDes": "No detail.",
                                                       "seminar": 0,
+                                                      "stage":1,
                                                       "userID":
                                                           (auth.currentUser)!
                                                               .uid,
@@ -277,110 +278,107 @@ class _JoblistWidgetState extends State<JoblistWidget> {
   }
 
   Future<bool> jobDetail(String image, Map<String, dynamic> jobs) async {
-    // int valueText = number;
+    String comNameVal = "";
+    String jobNameVal = "";
+    String jobDesVal = "";
     return await showDialog(
       context: context,
       barrierDismissible: false,
       builder: (BuildContext context) {
         return AlertDialog(
           title: ListTile(
-            leading: Container(
-              width: 60,
-              height: 60,
-              clipBehavior:
-              Clip.antiAlias,
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-              ),
-              child: Image.network(
-                image,
-              ),
-            ),
-            title: Text(jobs['comName']),
-            subtitle: Text(jobs['jobName']),
-            // trailing: Icon(Icons.more_vert),
+          leading: Container(
+          width: 60,
+          height: 60,
+          clipBehavior:
+          Clip.antiAlias,
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
           ),
+          child: Image.network(
+            image,
+          ),
+        ),
+        title: Text(jobs['comName']),
+        subtitle: Text(jobs['jobName']),
+        // trailing: Icon(Icons.more_vert),
+        ),
           content: SingleChildScrollView(
               child: Container(
                   height: 400.0, // Change as per your requirement
                   width: 300.0, // Change as per your requirement
-                  child: ListView(children: [
-                    Container(
-                      height: 300.0,
-                      width: 100.0,
-                      margin: const EdgeInsets.all(15.0),
-                      padding: const EdgeInsets.all(3.0),
-                      decoration: BoxDecoration(
-                        border: Border.all(color: Color(0xFFF3AE20)),
-                        borderRadius: new BorderRadius.circular(8),
-                      ),
-                      child: Text(jobs['jobDes']),
-                    ),
-                    // TextFormField(
-                    //   // initialValue: number.toString(),
-                    //     onChanged: (value) {
-                    //       setState(() {
-                    //         valueText = int.parse(value);
-                    //       });
-                    //     },
-                    //     controller:
-                    //     TextEditingController(text: number.toString()),
-                    //     keyboardType: TextInputType.number,
-                    //     inputFormatters: <TextInputFormatter>[
-                    //       FilteringTextInputFormatter.digitsOnly
-                    //     ],
-                    //     decoration: InputDecoration(
-                    //         labelText: "number",
-                    //         hintText: "any number",
-                    //         icon: Icon(Icons.calculate))
-                    // ),
-                    Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: <Widget>[
-                          ElevatedButton(
-                              onPressed: () {
-                                Navigator.pop(context, false);
-                              },
-                              style: ElevatedButton.styleFrom(
-                                  minimumSize: Size(130, 40),
-                                  primary: Color(0xFFBF2F2F),
-                                  padding: EdgeInsets.symmetric(
-                                    horizontal: 30,
-                                    vertical: 8,
-                                  ),
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius:
-                                          new BorderRadius.circular(12))),
-                              child: Text(
-                                'Cancel',
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 16,
-                                ),
-                              )),
-                          ElevatedButton(
-                              onPressed: () {
-                                Navigator.pop(context, true);
-                              },
-                              style: ElevatedButton.styleFrom(
-                                  minimumSize: Size(130, 40),
-                                  primary: Color(0xFF6DBA45),
-                                  padding: EdgeInsets.symmetric(
-                                    horizontal: 30,
-                                    vertical: 8,
-                                  ),
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius:
-                                          new BorderRadius.circular(12))),
-                              child: Text(
-                                'Apply',
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 16,
-                                ),
-                              )),
+                  child: Column(
+                    children: [
+                      Container(
+                        height: 300.0,
+                        width: 300.0,
+                        child: ListView(children: [
+                          Container(
+                            height: 270.0,
+                            width: 300.0,
+                            margin: const EdgeInsets.all(15.0),
+                            padding: const EdgeInsets.all(3.0),
+                            decoration: BoxDecoration(
+                              border: Border.all(color: Color(0xFFF3AE20)),
+                              borderRadius: new BorderRadius.circular(8),
+                            ),
+                            child: Text(jobs['jobDes']),
+                          ),
                         ]),
-                  ]))),
+                      ),
+                      Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(0, 50, 0, 0),
+                        child:
+                        Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: <Widget>[
+                              ElevatedButton(
+                                  onPressed: () {
+                                    Navigator.pop(context, false);
+                                  },
+                                  style: ElevatedButton.styleFrom(
+                                      minimumSize: Size(130, 40),
+                                      primary: Color(0xFFBF2F2F),
+                                      padding: EdgeInsets.symmetric(
+                                        horizontal: 30,
+                                        vertical: 8,
+                                      ),
+                                      shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                          new BorderRadius.circular(12))),
+                                  child: Text(
+                                    'Cancel',
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 16,
+                                    ),
+                                  )),
+                              ElevatedButton(
+                                  onPressed: () {
+                                    Navigator.pop(context, true);
+                                  },
+                                  style: ElevatedButton.styleFrom(
+                                      minimumSize: Size(130, 40),
+                                      primary: Color(0xFF6DBA45),
+                                      padding: EdgeInsets.symmetric(
+                                        horizontal: 30,
+                                        vertical: 8,
+                                      ),
+                                      shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                          new BorderRadius.circular(12))),
+                                  child: Text(
+                                    'Apply',
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 16,
+                                    ),
+                                  )),
+                            ]),
+                      )
+                    ],
+                  )
+              )),
         );
       },
     );

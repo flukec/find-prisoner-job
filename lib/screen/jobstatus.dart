@@ -385,126 +385,131 @@ class _JobstatusWidgetState extends State<JobstatusWidget> {
     );
   }
 
+  // Future<bool> appDetail(String title, String detail) async {
+  //   // int valueText = number;
+  //   return await showDialog(
+  //     context: context,
+  //     barrierDismissible: false,
+  //     builder: (BuildContext context) {
+  //       return
+  //         AlertDialog(
+  //           title: Text(title),
+  //           content: SingleChildScrollView(
+  //               child: Container(
+  //                   height: 400.0, // Change as per your requirement
+  //                   width: 300.0, // Change as per your requirement
+  //                   child: ListView(children: [
+  //                     Container(
+  //                       height: 300.0,
+  //                       width: 100.0,
+  //                       margin: const EdgeInsets.all(15.0),
+  //                       padding: const EdgeInsets.all(3.0),
+  //                       decoration: BoxDecoration(
+  //                         border: Border.all(color: Color(0xFFF3AE20)),
+  //                         borderRadius: new BorderRadius.circular(8),
+  //                       ),
+  //                       child: Text(detail),
+  //                     ),
+  //                     Row(
+  //                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+  //                         children: <Widget>[
+  //                           ElevatedButton(
+  //                               onPressed: () {
+  //                                 Navigator.pop(context, true);
+  //                               },
+  //                               style: ElevatedButton.styleFrom(
+  //                                   minimumSize: Size(130, 40),
+  //                                   primary: Color(0xFFBF2F2F),
+  //                                   padding: EdgeInsets.symmetric(
+  //                                     horizontal: 30,
+  //                                     vertical: 8,
+  //                                   ),
+  //                                   shape: RoundedRectangleBorder(
+  //                                       borderRadius:
+  //                                       new BorderRadius.circular(12))),
+  //                               child: Text(
+  //                                 'Close',
+  //                                 style: TextStyle(
+  //                                   color: Colors.white,
+  //                                   fontSize: 16,
+  //                                 ),
+  //                               )),
+  //                         ]),
+  //                   ]))),
+  //         );
+  //     },
+  //   );
+  // }
+
   Future<bool> appDetail(String title, String detail) async {
-    // int valueText = number;
+    String comNameVal = "";
+    String jobNameVal = "";
+    String jobDesVal = "";
     return await showDialog(
       context: context,
       barrierDismissible: false,
       builder: (BuildContext context) {
-        return
-
-          AlertDialog(
-            title: Text(title),
-            content: SingleChildScrollView(
-                child: Container(
-                    height: 400.0, // Change as per your requirement
-                    width: 300.0, // Change as per your requirement
-                    child: ListView(children: [
-                      Container(
-                        height: 300.0,
-                        width: 100.0,
-                        margin: const EdgeInsets.all(15.0),
-                        padding: const EdgeInsets.all(3.0),
-                        decoration: BoxDecoration(
-                          border: Border.all(color: Color(0xFFF3AE20)),
-                          borderRadius: new BorderRadius.circular(8),
-                        ),
-                        child: Text(detail),
-                      ),
-                      // TextFormField(
-                      //   // initialValue: number.toString(),
-                      //     onChanged: (value) {
-                      //       setState(() {
-                      //         valueText = int.parse(value);
-                      //       });
-                      //     },
-                      //     controller:
-                      //     TextEditingController(text: number.toString()),
-                      //     keyboardType: TextInputType.number,
-                      //     inputFormatters: <TextInputFormatter>[
-                      //       FilteringTextInputFormatter.digitsOnly
-                      //     ],
-                      //     decoration: InputDecoration(
-                      //         labelText: "number",
-                      //         hintText: "any number",
-                      //         icon: Icon(Icons.calculate))
-                      // ),
-                      Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: <Widget>[
-                            ElevatedButton(
-                                onPressed: () {
-                                  Navigator.pop(context, true);
-                                },
-                                style: ElevatedButton.styleFrom(
-                                    minimumSize: Size(130, 40),
-                                    primary: Color(0xFFBF2F2F),
-                                    padding: EdgeInsets.symmetric(
-                                      horizontal: 30,
-                                      vertical: 8,
-                                    ),
-                                    shape: RoundedRectangleBorder(
-                                        borderRadius:
-                                        new BorderRadius.circular(12))),
-                                child: Text(
-                                  'Close',
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 16,
-                                  ),
-                                )),
-                          ]),
-                    ]))),
-          );
-
-          AlertDialog(
+        return AlertDialog(
           title: Text(title),
           content: SingleChildScrollView(
-              child:
-              Container(
-                  height: 100.0, // Change as per your requirement
+              child: Container(
+                  height: 400.0, // Change as per your requirement
                   width: 300.0, // Change as per your requirement
-                  child: ListView(children: [
-                    Container(
-                      margin: const EdgeInsets.all(15.0),
-                      padding: const EdgeInsets.all(3.0),
-                      decoration: BoxDecoration(
-                          border: Border.all(color: Colors.blueAccent)
-                      ),
-                      child: Text(detail),
-                    ),
-                    Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: <Widget>[
-                          ElevatedButton(
-                              onPressed: () {
-                                Navigator.pop(context, true);
-                              },
-                              style: ElevatedButton.styleFrom(
-                                  minimumSize: Size(103, 30),
-                                  primary: Colors.grey,
-                                  padding: EdgeInsets.symmetric(
-                                    horizontal: 30,
-                                    vertical: 8,
-                                  ),
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius: new BorderRadius.circular(5.0))),
-                              child: Text(
-                                'Close',
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              )
+                  child: Column(
+                    children: [
+                      Container(
+                        height: 300.0,
+                        width: 300.0,
+                        child: ListView(children: [
+                          Container(
+                            height: 270.0,
+                            width: 300.0,
+                            margin: const EdgeInsets.all(15.0),
+                            padding: const EdgeInsets.all(3.0),
+                            decoration: BoxDecoration(
+                              border: Border.all(color: Color(0xFFF3AE20)),
+                              borderRadius: new BorderRadius.circular(8),
+                            ),
+                            child: Text(detail),
                           ),
                         ]),
-                  ]))),
+                      ),
+                      Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(0, 50, 0, 0),
+                        child:
+                        Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: <Widget>[
+                              ElevatedButton(
+                                  onPressed: () {
+                                    Navigator.pop(context, true);
+                                  },
+                                  style: ElevatedButton.styleFrom(
+                                      minimumSize: Size(130, 40),
+                                      primary: Color(0xFFBF2F2F),
+                                      padding: EdgeInsets.symmetric(
+                                        horizontal: 30,
+                                        vertical: 8,
+                                      ),
+                                      shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                          new BorderRadius.circular(12))),
+                                  child: Text(
+                                    'Close',
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 16,
+                                    ),
+                                  )),
+                            ]),
+                      )
+                    ],
+                  )
+              )),
         );
-
-
       },
     );
   }
+
 }
 

@@ -12,9 +12,9 @@ class Welcome extends StatelessWidget {
 
   final auth = FirebaseAuth.instance;
 
-  Future<String> getCurrentUID() async {
-    return (auth.currentUser)!.uid;
-  }
+  // Future<String> getCurrentUID() async {
+  //   return (auth.currentUser)!.uid;
+  // }
 
   @override
   Widget build(BuildContext context) {

@@ -255,8 +255,8 @@ class _SignupWidgetState extends State<SignupWidget> {
                                                 password: this.email.password)
                                                 .then((value) {
 
-                                                  print("CHECK Uuid START");
-                                                  print("TEST1 ${value.user}");
+                                                  // print("CHECK Uuid START");
+                                                  // print("TEST1 ${value.user}");
 
                                                   FirebaseFirestore.instance.collection('users')
                                                       .doc(value.user!.uid) // <-- Document ID
@@ -265,13 +265,14 @@ class _SignupWidgetState extends State<SignupWidget> {
                                                     "email": value.user!.email,
                                                     "isAdmin": false,
                                                     "name": "",
+                                                    "saveProfile": false,
                                                     "surname": "",
                                                   }) // <-- Your data
                                                       .then((_) => print('Create User'))
                                                       .catchError((error) => print('Create failed: $error'));
 
-                                                  print("TEST2 ${value.user!.uid}");
-                                                  print("CHECK Uuid END");
+                                                  // print("TEST2 ${value.user!.uid}");
+                                                  // print("CHECK Uuid END");
                                               // final auth = FirebaseAuth.instance;
                                               // print((auth.currentUser)!.uid);
 

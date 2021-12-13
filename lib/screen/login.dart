@@ -9,6 +9,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 import 'package:final_app/model/email.dart';
 import 'landingpage.dart';
+import 'landingpageadmin.dart';
 import 'signup.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -426,7 +427,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                                                       if(user['isAdmin']){
                                                         Navigator.pushReplacement(context,
                                                             MaterialPageRoute(builder: (context) {
-                                                              return WelcomeAdmin();
+                                                              return LandingpageadminWidget();
                                                             }));
                                                       }else{
                                                         Navigator.pushReplacement(context,
